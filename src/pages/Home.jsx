@@ -10,10 +10,10 @@ import Testimonials from '../components/Testimonials';
 import CallToAction from '../components/CallToAction';
 import Footer from '../components/Footer';
 
-const Home = () => {
+const Home = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-background-light text-textPrimary-light dark:bg-background dark:text-textPrimary transition-colors duration-300 ease-emphasized">
-      <Navbar />
+      <Navbar onNavigate={onNavigate} />
       <main className="pt-20">
         <section
           id="hero"
