@@ -18,25 +18,44 @@ const testimonials = [
   },
 ];
 
-const Testimonials = () => {
+const Testimonials = ({ onNavigate }) => {
   return (
     <section aria-labelledby="testimonials-heading">
-      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary-gold">
-            Platform outcomes
-          </p>
+      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-start">
+        <div className="flex flex-col w-full md:w-2/3 gap-2">
+          <div className="flex items-center gap-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary-gold">
+              Platform outcomes
+            </p>
+            <button
+              onClick={() => onNavigate && onNavigate('resources')}
+              aria-label="Explore Resources"
+              className="inline-flex items-center gap-2 rounded-md border border-primary-gold/30 bg-gradient-to-r from-primary-gold/20 to-transparent px-3 py-1.5 text-sm font-semibold text-primary-gold shadow-[0_6px_18px_rgba(223,182,73,0.12)] backdrop-blur-sm hover:from-primary-gold/30 hover:to-primary-gold/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold/40/60"
+            >
+              <span className="inline-flex h-4 w-4 items-center justify-center text-primary-gold">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8.414A2 2 0 0018.586 6L14 1.414A2 2 0 0012.586 1H6zm8 2.414L18.586 8H14a1 1 0 01-1-1V4.414zM8 11h8v2H8v-2zm0 4h8v2H8v-2z" />
+                </svg>
+              </span>
+              <span className="hidden sm:inline">Explore Resources</span>
+              <span className="sm:hidden">Resources</span>
+            </button>
+          </div>
+
           <h2
             id="testimonials-heading"
-            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary md:text-3xl"
+            className="font-heading text-2xl font-semibold tracking-tight text-textPrimary md:text-3xl"
           >
             Designed for governance, not guesswork.
           </h2>
         </div>
-        <p className="max-w-md text-sm text-textSecondary">
-          The platform supports internal approvals, site-level coordination, and finance teams who need clear,
-          auditable records.
-        </p>
+
+        <div className="flex items-start gap-4">
+          <p className="max-w-md text-sm text-textSecondary hidden md:block">
+            The platform supports internal approvals, site-level coordination, and finance teams who need clear,
+            auditable records.
+          </p>
+        </div>
       </div>
 
       <div className="grid gap-5 md:grid-cols-3">

@@ -56,7 +56,7 @@ const Home = ({ onNavigate }) => {
 
         <section id="resources" className="border-b border-borderColor-light dark:border-borderColor-dark/40">
           <div className="container max-w-7xl py-12 md:py-20">
-            <Testimonials />
+            <Testimonials onNavigate={onNavigate} />
           </div>
         </section>
 
