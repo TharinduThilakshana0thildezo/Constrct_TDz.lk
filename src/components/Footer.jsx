@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({ onNavigate }) => {
   return (
     <footer className="mt-16 border-t border-borderColor-light dark:border-borderColor-dark/60 bg-background-light text-xs text-textSecondary-light dark:bg-black/95 dark:text-textSecondary">
       <div className="container max-w-7xl py-10">
@@ -20,7 +20,14 @@ const Footer = () => {
               Platform
             </h3>
             <ul className="mt-3 space-y-2 text-[0.8rem]">
-              <li>Overview</li>
+              <li>
+                <button
+                  onClick={() => onNavigate('overview')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  Overview
+                </button>
+              </li>
               <li>For project owners</li>
               <li>For contractors</li>
               <li>For consultants</li>
