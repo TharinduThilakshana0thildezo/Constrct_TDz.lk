@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { label: 'Resources', href: '#resources' },
 ];
 
-const Navbar = ({ onNavigate }) => {
+const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,10 +22,16 @@ const Navbar = ({ onNavigate }) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNavClick = (href) => {
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const handleNavClick = (href, action) => {
+    if (action) {
+      if (onNavigate) {
+        onNavigate(action);
+      }
+    } else if (href) {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     setIsOpen(false);
   };
@@ -33,6 +39,14 @@ const Navbar = ({ onNavigate }) => {
   const handleLoginClick = () => {
     if (onNavigate) {
       onNavigate('login');
+    }
+  };
+
+  const handleLogoClick = () => {
+    if (logoScrollToTop) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      handleNavClick('#hero');
     }
   };
 
@@ -48,7 +62,7 @@ const Navbar = ({ onNavigate }) => {
         {/* Logo */}
         <div
           className="flex cursor-pointer items-center gap-2"
-          onClick={() => handleNavClick('#hero')}
+          onClick={handleLogoClick}
         >
           <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary-gold/40 bg-black/80 text-primary-gold shadow-subtle">
             <span className="text-sm font-semibold tracking-[0.16em]">LK</span>
@@ -64,21 +78,23 @@ const Navbar = ({ onNavigate }) => {
         </div>
 
         {/* Desktop nav */}
-        <div className="hidden flex-1 items-center justify-center md:flex">
-          <ul className="flex items-center gap-7 text-xs font-medium uppercase tracking-[0.16em] text-primary-gold dark:text-textSecondary">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.label}>
-                <button
-                  type="button"
-                  onClick={() => handleNavClick(item.href)}
-                  className="transition-colors duration-150 text-primary-gold dark:text-textSecondary hover:text-primary-gold dark:hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {!hideNavItems && (
+          <div className="hidden flex-1 items-center justify-center md:flex">
+            <ul className="flex items-center gap-7 text-xs font-medium uppercase tracking-[0.16em] text-primary-gold dark:text-textSecondary">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.label}>
+                  <button
+                    type="button"
+                    onClick={() => handleNavClick(item.href, item.action)}
+                    className="transition-colors duration-150 text-primary-gold dark:text-textSecondary hover:text-primary-gold dark:hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Right actions */}
         <div className="hidden items-center md:flex">
@@ -133,21 +149,23 @@ const Navbar = ({ onNavigate }) => {
       {isOpen && (
         <div className="border-t border-borderColor-dark/50 bg-background/98 backdrop-blur-xl md:hidden">
           <div className="container max-w-6xl py-3">
-            <ul className="space-y-2 text-xs font-medium uppercase tracking-[0.16em] text-primary-gold dark:text-textSecondary">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.label}>
-                  <button
-                    type="button"
-                    onClick={() => handleNavClick(item.href)}
-                    className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-left transition-colors duration-150 hover:bg-card/80 hover:text-primary-gold focus-visible:outline-none focus-visible:bg-card/80 focus-visible:text-primary-gold text-primary-gold dark:text-textSecondary"
-                  >
-                    <span>{item.label}</span>
-                    <span className="text-[0.55rem] text-textSecondary/70">●</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-borderColor-dark/40 pt-3">
+            {!hideNavItems && (
+              <ul className="space-y-2 text-xs font-medium uppercase tracking-[0.16em] text-primary-gold dark:text-textSecondary">
+                {NAV_ITEMS.map((item) => (
+                  <li key={item.label}>
+                    <button
+                      type="button"
+                      onClick={() => handleNavClick(item.href)}
+                      className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-left transition-colors duration-150 hover:bg-card/80 hover:text-primary-gold focus-visible:outline-none focus-visible:bg-card/80 focus-visible:text-primary-gold text-primary-gold dark:text-textSecondary"
+                    >
+                      <span>{item.label}</span>
+                      <span className="text-[0.55rem] text-textSecondary/70">●</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <div className={`${!hideNavItems ? 'mt-3' : ''} flex flex-wrap items-center gap-2 border-t border-borderColor-dark/40 pt-3`}>
               <button
                 type="button"
                 onClick={handleLoginClick}
