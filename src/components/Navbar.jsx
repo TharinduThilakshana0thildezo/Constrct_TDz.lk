@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ThemeToggle from './ThemeToggle';
+import PlatformDropdown from './PlatformDropdown';
 
 const NAV_ITEMS = [
   { label: 'Find Projects', href: '#services' },
@@ -80,28 +81,33 @@ const Navbar = ({ onNavigate }) => {
         </div>
 
         {/* Right actions */}
-        <div className="hidden items-center gap-3 md:flex">
-          <ThemeToggle />
-          <button
-            type="button"
-            onClick={handleLoginClick}
-            className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
-          >
-            Login
-          </button>
-          <button
-            type="button"
-            onClick={handleLoginClick}
-            className="rounded-full border border-borderColor-dark/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-textPrimary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            Register
-          </button>
-          <button
-            type="button"
-            className="rounded-full bg-gradient-to-r from-primary-gold to-primary-goldSecondary px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-black shadow-card transition-all duration-200 hover:from-primary-goldSecondary hover:to-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            Post a Project
-          </button>
+        <div className="hidden items-center md:flex">
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={handleLoginClick}
+              className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              onClick={handleLoginClick}
+              className="rounded-full border border-borderColor-dark/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-textPrimary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              Register
+            </button>
+            <button
+              type="button"
+              className="rounded-full bg-gradient-to-r from-primary-gold to-primary-goldSecondary px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-black shadow-card transition-all duration-200 hover:from-primary-goldSecondary hover:to-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              Post a Project
+            </button>
+          </div>
+          <div className="ml-3">
+            <PlatformDropdown />
+          </div>
         </div>
 
         {/* Mobile actions */}
