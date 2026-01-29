@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Overview from './pages/Overview';
+import Resources from './pages/Resources';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -25,6 +26,7 @@ const App = () => {
       {currentPage === 'overview' && <Overview onNavigate={handleNavigate} />}
       {currentPage === 'login' && <Login onNavigate={handleNavigate} onLogin={handleLogin} />}
       {currentPage === 'dashboard' && <Dashboard onNavigate={handleNavigate} user={userData} />}
+      {currentPage === 'resources' && <Resources onNavigate={handleNavigate} />}
     </>
   );
 };

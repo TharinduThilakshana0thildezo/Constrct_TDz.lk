@@ -39,7 +39,9 @@ const Footer = ({ onNavigate }) => {
               Resources
             </h3>
             <ul className="mt-3 space-y-2 text-[0.8rem]">
-              <li>Implementation guide</li>
+              <li>
+                <button onClick={() => onNavigate && onNavigate('resources')} className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary">Browse resources</button>
+              </li>
               <li>Contract templates</li>
               <li>Procurement checklist</li>
               <li>Support centre</li>
