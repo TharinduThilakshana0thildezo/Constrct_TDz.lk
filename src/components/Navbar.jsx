@@ -9,7 +9,7 @@ const NAV_ITEMS = [
   { label: 'Resources', href: '#resources' },
 ];
 
-const Navbar = () => {
+const Navbar = ({ onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,6 +27,12 @@ const Navbar = () => {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     setIsOpen(false);
+  };
+
+  const handleLoginClick = () => {
+    if (onNavigate) {
+      onNavigate('login');
+    }
   };
 
   return (
@@ -78,12 +84,14 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             type="button"
+            onClick={handleLoginClick}
             className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
           >
             Login
           </button>
           <button
             type="button"
+            onClick={handleLoginClick}
             className="rounded-full border border-borderColor-dark/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-textPrimary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             Register
@@ -136,12 +144,14 @@ const Navbar = () => {
             <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-borderColor-dark/40 pt-3">
               <button
                 type="button"
+                onClick={handleLoginClick}
                 className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
               >
                 Login
               </button>
               <button
                 type="button"
+                onClick={handleLoginClick}
                 className="rounded-full border border-borderColor-dark/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-textPrimary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 Register
