@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HERO_IMAGE_URL =
-  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80';
+  'https://www.buid.ac.ae/wp-content/uploads/2023/08/construction-mana.jpg';
 
 /**
  * Hero
