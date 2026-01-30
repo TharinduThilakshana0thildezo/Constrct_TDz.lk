@@ -7,6 +7,8 @@ import FeaturedGuides from '../components/FeaturedGuides';
 import LatestUpdates from '../components/LatestUpdates';
 import DownloadsSection from '../components/DownloadsSection';
 import ResourcesCTA from '../components/ResourcesCTA';
+import AnimatedHeroBackground from '../components/AnimatedHeroBackground';
+import { useTheme } from '../context/ThemeContext';
 
 const categories = [
   {
@@ -51,6 +53,7 @@ const Resources = ({ onNavigate }) => {
   const [query, setQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [userType, setUserType] = useState('all');
+  const { isDark } = useTheme();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -65,12 +68,13 @@ const Resources = ({ onNavigate }) => {
 
   return (
     <div className="min-h-screen bg-background-light text-textPrimary-light dark:bg-background dark:text-textPrimary transition-colors duration-300 ease-emphasized">
-      <Navbar onNavigate={onNavigate} />
+      <Navbar onNavigate={onNavigate} hideNavItems={true} logoScrollToTop={true} />
 
       <main className="pt-20">
         {/* HERO */}
-        <section className="border-b border-borderColor-light dark:border-borderColor-dark/40">
-          <div className="container max-w-7xl py-12 md:py-20">
+        <section className="border-b border-borderColor-light dark:border-borderColor-dark/40 relative overflow-hidden">
+          <AnimatedHeroBackground isDark={isDark} />
+          <div className="container max-w-7xl py-12 md:py-20 relative z-10">
             <div className="mx-auto max-w-3xl">
               <div className="mb-6 flex items-center justify-between">
                 <button
