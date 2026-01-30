@@ -178,7 +178,7 @@ Node.js (v18+ recommended)
 npm or yarn
 
 Installation
-git clone https://github.com/your-username/construction-platform-frontend.git
+git clone https:(https://github.com/TharinduThilakshana0thildezo/Constrct_TDz.lk.git)
 cd construction-platform-frontend
 npm install
 
