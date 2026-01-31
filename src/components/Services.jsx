@@ -33,7 +33,7 @@ const services = [
   },
 ];
 
-const Services = () => {
+const Services = ({ onNavigate }) => {
   return (
     <section aria-labelledby="services-heading">
       <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
@@ -48,10 +48,26 @@ const Services = () => {
             Built for every construction discipline.
           </h2>
         </div>
-        <p className="max-w-md text-sm text-textSecondary">
-          From individual home builders to national developers, the platform adapts to the complexity of your
-          contracts and stakeholder mix.
-        </p>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center">
+          <p className="max-w-md text-sm text-textSecondary">
+            From individual home builders to national developers, the platform adapts to the complexity of your
+            contracts and stakeholder mix.
+          </p>
+          <button
+            onClick={() => onNavigate && onNavigate('find-projects')}
+            aria-label="View all projects"
+            className="group relative btn-animate inline-flex items-center gap-3 rounded-full border-2 border-primary-gold bg-gradient-to-br from-primary-gold via-yellow-400 to-primary-gold px-6 py-2.5 text-sm font-bold uppercase tracking-widest text-black shadow-[0_0_30px_rgba(223,182,73,0.4),0_0_60px_rgba(223,182,73,0.2),inset_0_1px_0_rgba(255,255,255,0.3)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_40px_rgba(223,182,73,0.6),0_0_80px_rgba(223,182,73,0.3),inset_0_1px_0_rgba(255,255,255,0.4)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background active:translate-y-0 whitespace-nowrap"
+          >
+            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-gold/30 to-transparent opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
+            <span className="relative inline-flex h-5 w-5 items-center justify-center text-black drop-shadow-md">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                <path fillRule="evenodd" clipRule="evenodd" d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8.414A2 2 0 0018.586 6L14 1.414A2 2 0 0012.586 1H6zm8 2.414L18.586 8H14a1 1 0 01-1-1V4.414zM8 11h8v2H8v-2zm0 4h8v2H8v-2z" />
+              </svg>
+            </span>
+            <span className="relative hidden sm:inline font-heading text-sm">View All Projects</span>
+            <span className="relative sm:hidden font-heading text-sm">View All</span>
+          </button>
+        </div>
       </div>
 
       <div className="grid gap-5 md:grid-cols-3">

@@ -7,11 +7,11 @@ module.exports = {
       colors: {
         background: {
           DEFAULT: '#0B0B0B',
-          light: '#FFFFFF',
+          light: '#E8EAED',
         },
         card: {
           DEFAULT: '#141414',
-          light: '#F5F6F7',
+          light: '#F5F7FA',
         },
         primary: {
           gold: '#C9A24D',
@@ -20,15 +20,15 @@ module.exports = {
         },
         textPrimary: {
           DEFAULT: '#F5F5F5',
-          light: '#111111',
+          light: '#1A1A1A',
         },
         textSecondary: {
           DEFAULT: '#B0B0B0',
-          light: '#4A4A4A',
+          light: '#5A5A5A',
         },
         borderColor: {
           dark: 'rgba(201, 162, 77, 0.15)',
-          light: '#E0E0E0',
+          light: '#C5C9CD',
         },
       },
       fontFamily: {

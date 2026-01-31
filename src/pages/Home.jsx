@@ -14,7 +14,7 @@ const Home = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-background-light text-textPrimary-light dark:bg-background dark:text-textPrimary transition-colors duration-300 ease-emphasized">
       <Navbar onNavigate={onNavigate} hideHomeNav={true} />
-      <main className="pt-20">
+      <main>
         <section
           id="hero"
           className="bg-gradient-to-b from-background-light via-background-light to-background-light dark:from-background dark:via-[#050505] dark:to-background"
@@ -38,13 +38,13 @@ const Home = ({ onNavigate }) => {
 
         <section id="services" className="border-b border-borderColor-light dark:border-borderColor-dark/40">
           <div className="container max-w-7xl py-12 md:py-20">
-            <Services />
+            <Services onNavigate={onNavigate} />
           </div>
         </section>
 
         <section id="contractors" className="border-b border-borderColor-light dark:border-borderColor-dark/40">
           <div className="container max-w-7xl py-12 md:py-20">
-            <FeaturedContractors />
+            <FeaturedContractors onNavigate={onNavigate} />
           </div>
         </section>
 

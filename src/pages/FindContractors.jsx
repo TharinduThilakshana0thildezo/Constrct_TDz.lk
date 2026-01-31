@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import FeaturedContractors from '../components/FeaturedContractors';
 import Footer from '../components/Footer';
@@ -9,6 +9,10 @@ const FindContractors = ({ onNavigate }) => {
   const { theme } = useTheme();
   const [selectedGrade, setSelectedGrade] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
 
   const contractors = [
     {
@@ -106,7 +110,10 @@ const FindContractors = ({ onNavigate }) => {
             <div className="mx-auto max-w-3xl">
               <div className="mb-6 flex items-center justify-between">
                 <button
-                  onClick={() => onNavigate && onNavigate('home')}
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'auto' });
+                    setTimeout(() => onNavigate && onNavigate('home'), 100);
+                  }}
                   className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-primary-gold to-primary-goldSecondary px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-black shadow-card"
                 >
                   <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/90 text-black">←</span>

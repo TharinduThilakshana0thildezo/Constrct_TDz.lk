@@ -24,9 +24,33 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
   }, []);
 
   const handleNavClick = (href, action) => {
+    // Check if we're on the home page
+    const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
+    
     if (action) {
-      if (onNavigate) {
-        onNavigate(action);
+      if (action === 'resources' && isHomePage) {
+        // Scroll to resources section if on home page
+        const resourcesEl = document.querySelector('#resources');
+        if (resourcesEl) {
+          resourcesEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else if (action === 'find-projects' && isHomePage) {
+        // Scroll to services section if on home page
+        const servicesEl = document.querySelector('#services');
+        if (servicesEl) {
+          servicesEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else if (action === 'find-contractors' && isHomePage) {
+        // Scroll to contractors section if on home page
+        const contractorsEl = document.querySelector('#contractors');
+        if (contractorsEl) {
+          contractorsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        // Navigate to the page for these actions
+        if (onNavigate) {
+          onNavigate(action);
+        }
       }
     } else if (href) {
       const el = document.querySelector(href);
@@ -45,8 +69,10 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
 
   const handleLogoClick = () => {
     if (logoScrollToTop) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      setTimeout(() => onNavigate && onNavigate('home'), 100);
     } else {
+      window.scrollTo({ top: 0, behavior: 'auto' });
       handleNavClick('#hero');
     }
   };

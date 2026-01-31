@@ -30,15 +30,16 @@ const Testimonials = ({ onNavigate }) => {
             <button
               onClick={() => onNavigate && onNavigate('resources')}
               aria-label="Explore Resources"
-              className="inline-flex items-center gap-2 rounded-md border border-primary-gold/30 bg-gradient-to-r from-primary-gold/20 to-transparent px-3 py-1.5 text-sm font-semibold text-primary-gold shadow-[0_6px_18px_rgba(223,182,73,0.12)] backdrop-blur-sm hover:from-primary-gold/30 hover:to-primary-gold/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold/40/60"
+              className="group relative btn-animate inline-flex items-center gap-3 rounded-full border-2 border-primary-gold bg-gradient-to-br from-primary-gold via-yellow-400 to-primary-gold px-6 py-2.5 text-sm font-bold uppercase tracking-widest text-black shadow-[0_0_30px_rgba(223,182,73,0.4),0_0_60px_rgba(223,182,73,0.2),inset_0_1px_0_rgba(255,255,255,0.3)] backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_40px_rgba(223,182,73,0.6),0_0_80px_rgba(223,182,73,0.3),inset_0_1px_0_rgba(255,255,255,0.4)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background active:translate-y-0"
             >
-              <span className="inline-flex h-4 w-4 items-center justify-center text-primary-gold">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-gold/30 to-transparent opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
+              <span className="relative inline-flex h-5 w-5 items-center justify-center text-black drop-shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
                   <path fillRule="evenodd" clipRule="evenodd" d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8.414A2 2 0 0018.586 6L14 1.414A2 2 0 0012.586 1H6zm8 2.414L18.586 8H14a1 1 0 01-1-1V4.414zM8 11h8v2H8v-2zm0 4h8v2H8v-2z" />
                 </svg>
               </span>
-              <span className="hidden sm:inline">Explore Resources</span>
-              <span className="sm:hidden">Resources</span>
+              <span className="relative hidden sm:inline font-heading text-sm">Explore Resources</span>
+              <span className="relative sm:hidden font-heading text-sm">Resources</span>
             </button>
           </div>
 

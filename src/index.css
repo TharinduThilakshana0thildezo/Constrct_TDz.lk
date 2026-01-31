@@ -38,6 +38,53 @@ body {
   animation: hero-pan 26s linear infinite alternate;
 }
 
+/* Button animations */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(223, 182, 73, 0.4), 0 0 60px rgba(223, 182, 73, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(223, 182, 73, 0.6), 0 0 80px rgba(223, 182, 73, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes golden-shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.btn-animate {
+  animation: subtle-float 3s ease-in-out infinite, pulse-glow 3s ease-in-out infinite;
+}
+
+.btn-shimmer {
+  background: linear-gradient(90deg, from-primary-gold, via-yellow-300, to-primary-gold, from-primary-gold);
+  background-size: 200% 100%;
+  animation: golden-shimmer 3s ease-in-out infinite;
+}
+
 /* Premium background patterns */
 .bg-grid-pattern {
   background-image: 
