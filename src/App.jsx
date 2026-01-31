@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Overview from './pages/Overview';
 import Resources from './pages/Resources';
+import FindProjects from './pages/FindProjects';
+import FindContractors from './pages/FindContractors';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -27,6 +29,8 @@ const App = () => {
       {currentPage === 'login' && <Login onNavigate={handleNavigate} onLogin={handleLogin} />}
       {currentPage === 'dashboard' && <Dashboard onNavigate={handleNavigate} user={userData} />}
       {currentPage === 'resources' && <Resources onNavigate={handleNavigate} />}
+      {currentPage === 'find-projects' && <FindProjects onNavigate={handleNavigate} />}
+      {currentPage === 'find-contractors' && <FindContractors onNavigate={handleNavigate} />}
     </>
   );
 };

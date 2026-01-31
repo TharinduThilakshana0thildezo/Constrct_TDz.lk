@@ -3,14 +3,15 @@ import ThemeToggle from './ThemeToggle';
 import PlatformDropdown from './PlatformDropdown';
 
 const NAV_ITEMS = [
-  { label: 'Find Projects', href: '#services' },
-  { label: 'Find Contractors', href: '#contractors' },
+  { label: 'Home', href: '#hero', action: 'home' },
+  { label: 'Find Projects', href: '#services', action: 'find-projects' },
+  { label: 'Find Contractors', href: '#contractors', action: 'find-contractors' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Pricing', href: '#pricing' },
-  { label: 'Resources', href: '#resources' },
+  { label: 'Resources', href: '#resources', action: 'resources' },
 ];
 
-const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false }) => {
+const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hideHomeNav = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -81,7 +82,7 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false }) =
         {!hideNavItems && (
           <div className="hidden flex-1 items-center justify-center md:flex">
             <ul className="flex items-center gap-7 text-xs font-medium uppercase tracking-[0.16em] text-primary-gold dark:text-textSecondary">
-              {NAV_ITEMS.map((item) => (
+              {NAV_ITEMS.filter(item => !hideHomeNav || item.label !== 'Home').map((item) => (
                 <li key={item.label}>
                   <button
                     type="button"
