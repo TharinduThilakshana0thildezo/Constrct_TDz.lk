@@ -159,8 +159,8 @@ const Login = ({ onNavigate, onLogin }) => {
       {/* Navbar and Content */}
       <div className="relative z-10">
         <LoginNavbar onNavigate={onNavigate} />
-        <main className="pt-20">
-          <section className="flex min-h-[calc(100vh-5rem)] items-center justify-center py-16 md:py-24">
+        <main>
+          <section className="flex min-h-screen items-center justify-center py-16 md:py-24">
             <div className="w-full max-w-md px-4">
               <LoginCard isRegister={isRegister} setIsRegister={setIsRegister} onLogin={onLogin} />
             </div>
