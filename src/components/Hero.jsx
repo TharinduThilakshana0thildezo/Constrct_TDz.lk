@@ -8,7 +8,7 @@ const HERO_IMAGE_URL =
  * - Full-bleed construction image behind content
  * - Two-column layout with stats overlay
  */
-const Hero = () => {
+const Hero = ({ onNavigate }) => {
   return (
     <div className="relative h-screen w-screen overflow-hidden -mx-[50vw] left-1/2 right-1/2 -mt-[6rem] -mb-[1px] m-0 p-0">
       {/* Background image behind content */}
@@ -47,6 +47,7 @@ const Hero = () => {
             </button>
             <button
               type="button"
+              onClick={() => onNavigate && onNavigate('find-contractors')}
               className="rounded-full border border-borderColor-dark/70 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-textPrimary transition-all duration-200 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Browse Contractors
