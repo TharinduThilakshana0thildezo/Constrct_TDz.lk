@@ -12,6 +12,35 @@ const FindContractors = ({ onNavigate }) => {
   const [expandedContractor, setExpandedContractor] = useState(null);
   const [selectedDates, setSelectedDates] = useState({});
   const [bookingType, setBookingType] = useState('');
+  const [contactModal, setContactModal] = useState(null);
+  const [quoteForm, setQuoteForm] = useState({});
+
+  const handlePhoneCall = (contractorName) => {
+    alert(`Calling ${contractorName}...\n\n📞 +94-11-2345678`);
+  };
+
+  const handleWhatsAppChat = (contractorName) => {
+    const message = `Hi, I'm interested in discussing a construction project with ${contractorName}.`;
+    const whatsappUrl = `https://wa.me/94112345678?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleEmailContact = (contractorName) => {
+    const subject = `Project Inquiry - ${contractorName}`;
+    const mailtoUrl = `mailto:info@${contractorName.toLowerCase().replace(/\s+/g, '')}.com?subject=${encodeURIComponent(subject)}`;
+    window.location.href = mailtoUrl;
+  };
+
+  const handleQuoteSubmit = (contractorName) => {
+    const form = quoteForm[contractorName] || {};
+    if (!form.projectType || !form.description) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    alert(`Quote request submitted for ${contractorName}!\n\nProject Type: ${form.projectType}\nDescription: ${form.description}\n\nWe'll get back to you soon!`);
+    setQuoteForm({...quoteForm, [contractorName]: {}});
+    setContactModal(null);
+  };
 
   const contractors = [
     {
@@ -343,6 +372,118 @@ const FindContractors = ({ onNavigate }) => {
                         >
                           <span>💬</span>
                           Book Consultation
+                        </button>
+                      </div>
+                    )}
+                    
+                    <button 
+                      onClick={() => setContactModal(contactModal === contractor.name ? null : contractor.name)}
+                      className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-medium text-sm uppercase tracking-[0.16em] hover:from-emerald-700 hover:to-emerald-800 transition-all flex items-center justify-center gap-2 group/btn"
+                    >
+                      <span>☎️</span>
+                      <span>Quick Contact</span>
+                      <span className="ml-auto">{contactModal === contractor.name ? '▼' : '▶'}</span>
+                    </button>
+
+                    {/* Quick Contact Options */}
+                    {contactModal === contractor.name && (
+                      <div className="mt-4 pt-4 border-t border-borderColor-light dark:border-borderColor-dark/30 space-y-3">
+                        {/* Call Button */}
+                        <button 
+                          onClick={() => handlePhoneCall(contractor.name)}
+                          className="w-full px-3 py-2.5 rounded-lg bg-red-600/90 hover:bg-red-700 text-white font-medium text-xs uppercase tracking-[0.12em] transition-all flex items-center justify-center gap-2"
+                        >
+                          <span>📞</span>
+                          Call Button
+                        </button>
+
+                        {/* WhatsApp Chat */}
+                        <button 
+                          onClick={() => handleWhatsAppChat(contractor.name)}
+                          className="w-full px-3 py-2.5 rounded-lg bg-green-600/90 hover:bg-green-700 text-white font-medium text-xs uppercase tracking-[0.12em] transition-all flex items-center justify-center gap-2"
+                        >
+                          <span>💬</span>
+                          WhatsApp Chat
+                        </button>
+
+                        {/* Email Button */}
+                        <button 
+                          onClick={() => handleEmailContact(contractor.name)}
+                          className="w-full px-3 py-2.5 rounded-lg bg-blue-600/90 hover:bg-blue-700 text-white font-medium text-xs uppercase tracking-[0.12em] transition-all flex items-center justify-center gap-2"
+                        >
+                          <span>✉️</span>
+                          Email Button
+                        </button>
+
+                        {/* Request Quote Form Button */}
+                        <button 
+                          onClick={() => setContactModal(`${contractor.name}-form`)}
+                          className="w-full px-3 py-2.5 rounded-lg bg-purple-600/90 hover:bg-purple-700 text-white font-medium text-xs uppercase tracking-[0.12em] transition-all flex items-center justify-center gap-2"
+                        >
+                          <span>📝</span>
+                          Request Quote
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Request Quote Form */}
+                    {contactModal === `${contractor.name}-form` && (
+                      <div className="mt-4 pt-4 border-t border-borderColor-light dark:border-borderColor-dark/30 space-y-3 bg-black/20 p-4 rounded-lg">
+                        <button 
+                          onClick={() => setContactModal(contractor.name)}
+                          className="text-xs text-primary-gold hover:underline mb-2"
+                        >
+                          ← Back to Quick Contact
+                        </button>
+                        
+                        <div className="space-y-2">
+                          <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-primary-gold">
+                            Project Type *
+                          </label>
+                          <select
+                            value={quoteForm[contractor.name]?.projectType || ''}
+                            onChange={(e) => setQuoteForm({...quoteForm, [contractor.name]: {...(quoteForm[contractor.name] || {}), projectType: e.target.value}})}
+                            className="w-full px-3 py-2 rounded-lg border border-borderColor-light dark:border-borderColor-dark/60 bg-white dark:bg-black/40 text-textPrimary-light dark:text-textPrimary text-sm focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                          >
+                            <option value="">Select Project Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="infrastructure">Infrastructure</option>
+                            <option value="renovation">Renovation</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-primary-gold">
+                            Project Description *
+                          </label>
+                          <textarea
+                            value={quoteForm[contractor.name]?.description || ''}
+                            onChange={(e) => setQuoteForm({...quoteForm, [contractor.name]: {...(quoteForm[contractor.name] || {}), description: e.target.value}})}
+                            placeholder="Describe your project..."
+                            className="w-full px-3 py-2 rounded-lg border border-borderColor-light dark:border-borderColor-dark/60 bg-white dark:bg-black/40 text-textPrimary-light dark:text-textPrimary text-sm focus:outline-none focus:ring-2 focus:ring-primary-gold resize-none h-20"
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-primary-gold">
+                            Budget (Optional)
+                          </label>
+                          <input
+                            type="text"
+                            value={quoteForm[contractor.name]?.budget || ''}
+                            onChange={(e) => setQuoteForm({...quoteForm, [contractor.name]: {...(quoteForm[contractor.name] || {}), budget: e.target.value}})}
+                            placeholder="e.g., 500,000 - 1,000,000"
+                            className="w-full px-3 py-2 rounded-lg border border-borderColor-light dark:border-borderColor-dark/60 bg-white dark:bg-black/40 text-textPrimary-light dark:text-textPrimary text-sm focus:outline-none focus:ring-2 focus:ring-primary-gold"
+                          />
+                        </div>
+
+                        <button 
+                          onClick={() => handleQuoteSubmit(contractor.name)}
+                          className="w-full px-3 py-2.5 rounded-lg bg-gradient-to-r from-primary-gold to-primary-goldSecondary text-black font-medium text-xs uppercase tracking-[0.12em] transition-all hover:from-primary-goldSecondary hover:to-primary-gold"
+                        >
+                          Submit Quote Request
                         </button>
                       </div>
                     )}
