@@ -9,6 +9,9 @@ const FindContractors = ({ onNavigate }) => {
   const { theme } = useTheme();
   const [selectedGrade, setSelectedGrade] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
+  const [expandedContractor, setExpandedContractor] = useState(null);
+  const [selectedDates, setSelectedDates] = useState({});
+  const [bookingType, setBookingType] = useState('');
 
   const contractors = [
     {
@@ -276,12 +279,73 @@ const FindContractors = ({ onNavigate }) => {
 
                   {/* Action Buttons */}
                   <div className="p-5 border-t border-borderColor-light dark:border-borderColor-dark/30 space-y-2">
-                    <button className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-primary-gold to-primary-goldSecondary text-black font-medium text-sm uppercase tracking-[0.16em] hover:from-primary-goldSecondary hover:to-primary-gold transition-all">
-                      View Profile
+                    <button 
+                      onClick={() => alert(`Viewing profile for ${contractor.name}\n\nRating: ${contractor.rating}/5\nExperience: ${contractor.years}\nLocation: ${contractor.location}\nSpecialties: ${contractor.specialties.join(', ')}`)}
+                      className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-primary-gold to-primary-goldSecondary text-black font-medium text-sm uppercase tracking-[0.16em] hover:from-primary-goldSecondary hover:to-primary-gold transition-all flex items-center justify-center gap-2 group/btn"
+                    >
+                      <span>📋</span>
+                      <span>View Profile</span>
+                      <span className="ml-auto opacity-0 group-hover/btn:opacity-100 transition-opacity">→</span>
                     </button>
-                    <button className="w-full px-4 py-2 rounded-lg border border-primary-gold text-primary-gold font-medium text-sm uppercase tracking-[0.16em] hover:bg-primary-gold hover:text-black transition-all">
-                      Contact
+                    
+                    <button 
+                      onClick={() => setExpandedContractor(expandedContractor === contractor.name ? null : contractor.name)}
+                      className="w-full px-4 py-3 rounded-lg border border-primary-gold text-primary-gold font-medium text-sm uppercase tracking-[0.16em] hover:bg-primary-gold hover:text-black transition-all flex items-center justify-center gap-2 group/btn"
+                    >
+                      <span>📅</span>
+                      <span>Book Services</span>
+                      <span className="ml-auto">{expandedContractor === contractor.name ? '▼' : '▶'}</span>
                     </button>
+
+                    {/* Expanded Booking Section */}
+                    {expandedContractor === contractor.name && (
+                      <div className="mt-4 pt-4 border-t border-borderColor-light dark:border-borderColor-dark/30 space-y-3">
+                        {/* Availability Booking - Select Date */}
+                        <div className="space-y-2">
+                          <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-primary-gold">
+                            📅 Availability Booking
+                          </label>
+                          <input 
+                            type="date"
+                            value={selectedDates[contractor.name] || ''}
+                            onChange={(e) => setSelectedDates({...selectedDates, [contractor.name]: e.target.value})}
+                            className="w-full px-3 py-2 rounded-lg border border-borderColor-light dark:border-borderColor-dark/60 bg-white dark:bg-black/40 text-textPrimary-light dark:text-textPrimary text-sm focus:outline-none focus:ring-2 focus:ring-primary-gold transition-all"
+                          />
+                        </div>
+
+                        {/* Request Site Visit */}
+                        <button 
+                          onClick={() => {
+                            if (selectedDates[contractor.name]) {
+                              alert(`Site visit requested for ${contractor.name}\nDate: ${selectedDates[contractor.name]}`);
+                              setExpandedContractor(null);
+                            } else {
+                              alert('Please select a date first');
+                            }
+                          }}
+                          className="w-full px-3 py-2 rounded-lg bg-blue-600/80 hover:bg-blue-700 text-white font-medium text-xs uppercase tracking-[0.12em] transition-all flex items-center justify-center gap-2"
+                        >
+                          <span>🏢</span>
+                          Request Site Visit
+                        </button>
+
+                        {/* Book Consultation */}
+                        <button 
+                          onClick={() => {
+                            if (selectedDates[contractor.name]) {
+                              alert(`Consultation booked with ${contractor.name}\nDate: ${selectedDates[contractor.name]}`);
+                              setExpandedContractor(null);
+                            } else {
+                              alert('Please select a date first');
+                            }
+                          }}
+                          className="w-full px-3 py-2 rounded-lg bg-green-600/80 hover:bg-green-700 text-white font-medium text-xs uppercase tracking-[0.12em] transition-all flex items-center justify-center gap-2"
+                        >
+                          <span>💬</span>
+                          Book Consultation
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </article>
               ))}
