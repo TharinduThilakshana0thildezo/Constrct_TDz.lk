@@ -22,15 +22,36 @@ const Footer = ({ onNavigate }) => {
             <ul className="mt-3 space-y-2 text-[0.8rem]">
               <li>
                 <button
-                  onClick={() => onNavigate('overview')}
+                  onClick={() => onNavigate && onNavigate('overview')}
                   className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
                 >
                   Overview
                 </button>
               </li>
-              <li>For project owners</li>
-              <li>For contractors</li>
-              <li>For consultants</li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('overview')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  For project owners
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('find-contractors')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  For contractors
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('consultants')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  For consultants
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -42,9 +63,30 @@ const Footer = ({ onNavigate }) => {
               <li>
                 <button onClick={() => onNavigate && onNavigate('resources')} className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary">Browse resources</button>
               </li>
-              <li>Contract templates</li>
-              <li>Procurement checklist</li>
-              <li>Support centre</li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('contract-templates')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  Contract templates
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('procurement-checklist')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  Procurement checklist
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('support-centre')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  Support centre
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -53,9 +95,30 @@ const Footer = ({ onNavigate }) => {
               Legal & Contact
             </h3>
             <ul className="mt-3 space-y-2 text-[0.8rem]">
-              <li>Terms of use</li>
-              <li>Privacy & PDPA</li>
-              <li>Cookie preferences</li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('terms-of-use')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  Terms of use
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('privacy-pdpa')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  Privacy &amp; PDPA
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('cookie-preferences')}
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                >
+                  Cookie preferences
+                </button>
+              </li>
               <li>Contact: info@construct.lk</li>
             </ul>
           </div>
