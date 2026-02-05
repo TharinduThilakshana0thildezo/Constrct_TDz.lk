@@ -3,12 +3,12 @@ import React from 'react';
 const HERO_IMAGE_URL =
   'https://www.buid.ac.ae/wp-content/uploads/2023/08/construction-mana.jpg';
 
+/**
+ * Hero
+ * - Full-bleed construction image behind content
+ * - Two-column layout with stats overlay
+ */
 const Hero = ({ onNavigate }) => {
-  const handleScrollToBottom = () => {
-    if (typeof window === 'undefined' || typeof document === 'undefined') return;
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  };
-
   return (
     <div className="relative h-screen w-screen overflow-hidden -mx-[50vw] left-1/2 right-1/2 -mt-[6rem] -mb-[1px] m-0 p-0">
       {/* Background image behind content */}
