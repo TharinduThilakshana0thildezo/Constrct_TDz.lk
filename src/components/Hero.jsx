@@ -136,6 +136,16 @@ const Hero = ({ onNavigate }) => {
           </div>
         </div>
       </div>
+
+      {/* Scroll-to-bottom button */}
+      <button
+        type="button"
+        onClick={handleScrollToBottom}
+        aria-label="Scroll to bottom of page"
+        className="group absolute right-6 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all duration-200 hover:bg-white/20 hover:border-primary-gold/70 hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black/60"
+      >
+        <span className="text-lg leading-none group-hover:translate-y-0.5 transition-transform duration-200">↓</span>
+      </button>
     </div>
   );
 };
