@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import AnimatedHeroBackground from '../components/AnimatedHeroBackground';
+import { useTheme } from '../context/ThemeContext';
 
 const SAMPLE_TEMPLATES = [
   {
@@ -24,6 +26,7 @@ const SAMPLE_TEMPLATES = [
 ];
 
 const ContractTemplates = ({ onNavigate }) => {
+  const { theme } = useTheme();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
@@ -80,8 +83,9 @@ Contractor: __________________    Date: __________
       <Navbar onNavigate={onNavigate} hideNavItems={true} logoScrollToTop={true} />
       <main className="pt-20">
         {/* Hero */}
-        <section className="border-b border-borderColor-light dark:border-borderColor-dark/40">
-          <div className="container max-w-7xl py-16 md:py-24">
+        <section className="border-b border-borderColor-light dark:border-borderColor-dark/40 relative overflow-hidden">
+          <AnimatedHeroBackground isDark={theme === 'dark'} />
+          <div className="container max-w-7xl py-16 md:py-24 relative z-10">
             <div className="mb-6">
               <button
                 onClick={() => onNavigate && onNavigate('resources')}
