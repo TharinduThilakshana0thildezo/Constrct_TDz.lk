@@ -62,7 +62,7 @@ const FeaturedContractors = ({ onNavigate }) => {
           <button
             onClick={() => onNavigate && onNavigate('find-contractors')}
             aria-label="View all contractors"
-            className="group relative inline-flex items-center gap-3 rounded-full border border-primary-gold/80 bg-gradient-to-r from-[#F5DDA3] via-[#E0C06A] to-[#C79A3A] px-7 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-[0.22em] text-black shadow-[0_12px_35px_rgba(0,0,0,0.65)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.8)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap"
+            className="btn-gold-neon group relative inline-flex items-center gap-3 rounded-full border border-primary-gold/80 bg-gradient-to-r from-[#F5DDA3] via-[#E0C06A] to-[#C79A3A] px-7 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-[0.22em] text-black shadow-[0_12px_35px_rgba(0,0,0,0.65)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.8)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap"
           >
             <span className="absolute inset-[1px] rounded-full bg-gradient-to-r from-white/35 via-transparent to-white/10 opacity-60 blur-[1px] transition-opacity duration-300 group-hover:opacity-90" />
             <span className="relative inline-flex h-5 w-5 items-center justify-center text-black drop-shadow-md">
