@@ -3,12 +3,12 @@ import React from 'react';
 const HERO_IMAGE_URL =
   'https://www.buid.ac.ae/wp-content/uploads/2023/08/construction-mana.jpg';
 
-/**
- * Hero
- * - Full-bleed construction image behind content
- * - Two-column layout with stats overlay
- */
 const Hero = ({ onNavigate }) => {
+  const handleScrollToBottom = () => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
+
   return (
     <div className="relative h-screen w-screen overflow-hidden -mx-[50vw] left-1/2 right-1/2 -mt-[6rem] -mb-[1px] m-0 p-0">
       {/* Background image behind content */}
@@ -136,6 +136,16 @@ const Hero = ({ onNavigate }) => {
           </div>
         </div>
       </div>
+
+      {/* Scroll-to-bottom button */}
+      <button
+        type="button"
+        onClick={handleScrollToBottom}
+        aria-label="Scroll to bottom of page"
+        className="group absolute right-6 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all duration-200 hover:bg-white/20 hover:border-primary-gold/70 hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black/60"
+      >
+        <span className="text-lg leading-none group-hover:translate-y-0.5 transition-transform duration-200">↓</span>
+      </button>
     </div>
   );
 };
