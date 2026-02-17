@@ -11,6 +11,12 @@ body {
   @apply font-body bg-background-light text-textPrimary-light dark:bg-background dark:text-textPrimary;
 }
 
+body.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
 /* Smooth scrollbar for dark UI */
 ::-webkit-scrollbar {
   width: 8px;

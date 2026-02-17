@@ -1,238 +1,173 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DashboardNavbar from '../components/DashboardNavbar';
+import Footer from '../components/Footer';
+import AIStudio from '../components/AIStudio';
+import { homeownerProjects } from '../data/mockData';
+import { useAppState } from '../context/AppStateContext';
 
-const Dashboard = ({ onNavigate, user: propUser }) => {
-  const [user] = useState(propUser || {
-    name: 'Guest User',
-    email: 'guest@example.com',
-    avatar: 'GU',
-    role: 'User',
-  });
+const Dashboard = ({ onNavigate, user }) => {
+  const { toggleModal } = useAppState();
+  const project = homeownerProjects[0];
 
   const stats = [
-    { label: 'Active Projects', value: '12', icon: '📋', trend: '+3' },
-    { label: 'Completed', value: '48', icon: '✅', trend: '+5' },
-    { label: 'Total Revenue', value: '$127K', icon: '💰', trend: '+12%' },
-    { label: 'Client Rating', value: '4.9', icon: '⭐', trend: '+0.2' },
-  ];
-
-  const recentProjects = [
-    {
-      id: 1,
-      title: 'Modern Office Renovation',
-      client: 'TechCorp Inc.',
-      status: 'In Progress',
-      progress: 65,
-      budget: '$45,000',
-      deadline: 'Feb 15, 2026',
-    },
-    {
-      id: 2,
-      title: 'Residential Kitchen Remodel',
-      client: 'Smith Family',
-      status: 'In Progress',
-      progress: 40,
-      budget: '$28,000',
-      deadline: 'Mar 1, 2026',
-    },
-    {
-      id: 3,
-      title: 'Commercial Flooring Installation',
-      client: 'Retail Solutions LLC',
-      status: 'Planning',
-      progress: 15,
-      budget: '$62,000',
-      deadline: 'Mar 20, 2026',
-    },
-  ];
-
-  const quickActions = [
-    { label: 'Post New Project', icon: '➕', color: 'from-primary-gold to-primary-goldSecondary' },
-    { label: 'Find Contractors', icon: '👷', color: 'from-blue-500 to-blue-600' },
-    { label: 'View Messages', icon: '💬', color: 'from-green-500 to-green-600' },
-    { label: 'Cost Estimator', icon: '🧮', color: 'from-purple-500 to-purple-600' },
+    { label: 'Active projects', value: '02', change: '+1', accent: 'text-primary-gold' },
+    { label: 'Pending approvals', value: '05', change: '-2', accent: 'text-blue-400' },
+    { label: 'Milestones this week', value: '03', change: '+1', accent: 'text-green-400' },
+    { label: 'Unread updates', value: '07', change: '+3', accent: 'text-red-400' },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-slate-900 dark:to-black text-textPrimary-light dark:text-textPrimary transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-slate-900 dark:to-black text-textPrimary-light dark:text-textPrimary">
       <DashboardNavbar user={user} onNavigate={onNavigate} />
-      
-      <main className="pt-20 pb-12">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden border-b border-gray-200 dark:border-borderColor-dark/40 bg-gradient-to-r from-primary-gold/5 via-transparent to-primary-goldSecondary/5 dark:from-primary-gold/10 dark:via-transparent dark:to-primary-goldSecondary/10">
-          <div className="container max-w-7xl py-12 md:py-16">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <main id="main-content" className="pt-28 pb-16">
+        <section className="container max-w-7xl space-y-8">
+          <header className="rounded-3xl border border-borderColor-dark/30 bg-black/80 p-6 text-white shadow-2xl">
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <h1 className="text-3xl md:text-4xl font-heading font-bold mb-2">
-                  Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-gold to-primary-goldSecondary">{user.name.split(' ')[0]}</span>! 👋
-                </h1>
-                <p className="text-textSecondary-light dark:text-textSecondary text-sm md:text-base">
-                  Here's what's happening with your projects today.
-                </p>
+                <p className="text-xs uppercase tracking-[0.3em] text-primary-gold/70">Project tracking</p>
+                <h1 className="text-3xl font-heading font-semibold">Welcome back, {user?.name?.split(' ')[0] || 'Builder'}</h1>
+                <p className="text-sm text-white/70">Stay on top of bids, milestones, AI insights, and finance.</p>
               </div>
-              <button className="px-6 py-3 rounded-lg bg-gradient-to-r from-primary-gold to-primary-goldSecondary text-black font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                + New Project
-              </button>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  className="rounded-full border border-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em]"
+                  onClick={() => toggleModal('showNotifications')}
+                >
+                  View alerts
+                </button>
+                <button
+                  type="button"
+                  className="rounded-full bg-gradient-to-r from-primary-gold to-primary-goldSecondary px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-black"
+                  onClick={() => onNavigate('post-project')}
+                >
+                  Post a project
+                </button>
+              </div>
             </div>
-          </div>
-        </section>
+          </header>
 
-        {/* Stats Grid */}
-        <section className="container max-w-7xl py-8 md:py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="group relative p-6 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-primary-gold/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-gold/5 to-transparent dark:from-primary-gold/10 dark:to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300"></div>
-                <div className="relative">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-3xl">{stat.icon}</span>
-                    <span className="text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full">
-                      {stat.trend}
-                    </span>
-                  </div>
-                  <h3 className="text-3xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r from-primary-gold to-primary-goldSecondary">
-                    {stat.value}
-                  </h3>
-                  <p className="text-sm text-textSecondary-light dark:text-textSecondary font-medium">
-                    {stat.label}
-                  </p>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat) => (
+              <article key={stat.label} className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-4 text-sm shadow-lg dark:bg-white/5">
+                <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">{stat.label}</p>
+                <p className={`mt-2 text-3xl font-semibold ${stat.accent}`}>{stat.value}</p>
+                <p className="text-xs text-textSecondary">Trend {stat.change}</p>
+              </article>
+            ))}
+          </div>
+
+          <section className="grid gap-6 lg:grid-cols-3">
+            <article className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-6 shadow-lg dark:bg-white/5 lg:col-span-2">
+              <div className="flex flex-wrap items-center justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Timeline</p>
+                  <h2 className="text-2xl font-heading font-semibold">{project.title}</h2>
                 </div>
+                <button type="button" className="text-xs font-semibold uppercase tracking-[0.3em] text-primary-gold">
+                  Export log
+                </button>
               </div>
-            ))}
-          </div>
-        </section>
+              <ol className="mt-6 space-y-4 border-l border-borderColor-dark/20 pl-6">
+                {project.timeline.map((event) => (
+                  <li key={event.id} className="relative">
+                    <span className="absolute -left-[14px] top-2 h-3 w-3 rounded-full bg-primary-gold"></span>
+                    <div className="rounded-2xl border border-borderColor-dark/10 bg-white/70 p-4 shadow-sm dark:bg-white/5">
+                      <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">{new Date(event.timestamp).toLocaleDateString()}</p>
+                      <p className="text-sm font-semibold">{event.title}</p>
+                      {event.assets && <p className="text-xs text-textSecondary">{event.assets} photos uploaded</p>}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </article>
 
-        {/* Quick Actions */}
-        <section className="container max-w-7xl py-8">
-          <h2 className="text-2xl font-heading font-bold mb-6">Quick Actions</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {quickActions.map((action, index) => (
-              <button
-                key={index}
-                className={`group p-6 rounded-xl bg-gradient-to-br ${action.color} text-white shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300`}
-              >
-                <div className="text-4xl mb-3">{action.icon}</div>
-                <p className="font-semibold text-sm">{action.label}</p>
-              </button>
-            ))}
-          </div>
-        </section>
+            <article className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-6 shadow-lg dark:bg-white/5">
+              <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Milestones</p>
+              <h2 className="text-xl font-heading font-semibold">Approvals & payouts</h2>
+              <ul className="mt-4 space-y-3 text-sm">
+                {project.milestones.map((milestone) => (
+                  <li key={milestone.id} className="rounded-2xl border border-borderColor-dark/20 p-3">
+                    <div className="flex items-center justify-between">
+                      <p className="font-semibold">{milestone.label}</p>
+                      <span className="text-xs text-textSecondary">Due {milestone.due}</span>
+                    </div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">
+                      {milestone.completed ? 'Completed' : 'In progress'}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </section>
 
-        {/* Recent Projects */}
-        <section className="container max-w-7xl py-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-heading font-bold">Recent Projects</h2>
-            <button className="text-sm font-semibold text-primary-gold hover:text-primary-goldSecondary transition-colors">
-              View All →
-            </button>
-          </div>
-          <div className="space-y-4">
-            {recentProjects.map((project) => (
-              <div
-                key={project.id}
-                className="group p-6 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-primary-gold/20 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <h3 className="text-lg font-bold mb-1">{project.title}</h3>
-                        <p className="text-sm text-textSecondary-light dark:text-textSecondary">
-                          Client: {project.client}
-                        </p>
-                      </div>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        project.status === 'In Progress'
-                          ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
-                          : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'
-                      }`}>
-                        {project.status}
-                      </span>
-                    </div>
-                    
-                    <div className="mt-4">
-                      <div className="flex items-center justify-between text-xs mb-2">
-                        <span className="text-textSecondary-light dark:text-textSecondary">Progress</span>
-                        <span className="font-semibold text-primary-gold">{project.progress}%</span>
-                      </div>
-                      <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-primary-gold to-primary-goldSecondary transition-all duration-500"
-                          style={{ width: `${project.progress}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex lg:flex-col items-center lg:items-end gap-4 lg:gap-2 text-sm">
-                    <div className="text-center lg:text-right">
-                      <p className="text-textSecondary-light dark:text-textSecondary text-xs">Budget</p>
-                      <p className="font-bold text-primary-gold">{project.budget}</p>
-                    </div>
-                    <div className="text-center lg:text-right">
-                      <p className="text-textSecondary-light dark:text-textSecondary text-xs">Deadline</p>
-                      <p className="font-semibold">{project.deadline}</p>
-                    </div>
-                  </div>
-                </div>
+          <section className="grid gap-6 lg:grid-cols-3">
+            <article className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-6 shadow-lg dark:bg-white/5 lg:col-span-2">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-heading font-semibold">Bid room</h2>
+                <button type="button" className="text-xs uppercase tracking-[0.3em] text-primary-gold">
+                  View bidders
+                </button>
               </div>
-            ))}
-          </div>
-        </section>
+              <table className="mt-4 w-full text-sm">
+                <thead>
+                  <tr className="text-left text-xs uppercase tracking-[0.3em] text-textSecondary">
+                    <th className="pb-2">Contractor</th>
+                    <th className="pb-2">Amount</th>
+                    <th className="pb-2">ETA</th>
+                    <th className="pb-2">Rating</th>
+                    <th className="pb-2">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {project.bids.map((bid) => (
+                    <tr key={bid.id} className="border-t border-borderColor-dark/20">
+                      <td className="py-3 font-semibold">{bid.contractor}</td>
+                      <td className="py-3">MYR {bid.amount.toLocaleString()}</td>
+                      <td className="py-3">{bid.etaWeeks} weeks</td>
+                      <td className="py-3">{bid.rating}</td>
+                      <td className="py-3 text-primary-gold">{bid.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </article>
 
-        {/* Activity Feed & Notifications */}
-        <section className="container max-w-7xl py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Recent Activity */}
-            <div className="p-6 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-primary-gold/20 shadow-lg">
-              <h3 className="text-xl font-heading font-bold mb-4">Recent Activity</h3>
-              <div className="space-y-4">
-                {[
-                  { action: 'New message from TechCorp Inc.', time: '2 hours ago', icon: '💬' },
-                  { action: 'Project milestone completed', time: '5 hours ago', icon: '✅' },
-                  { action: 'Invoice #1234 paid', time: '1 day ago', icon: '💰' },
-                  { action: 'New bid received', time: '2 days ago', icon: '📨' },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
-                    <span className="text-2xl">{item.icon}</span>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">{item.action}</p>
-                      <p className="text-xs text-textSecondary-light dark:text-textSecondary">{item.time}</p>
+            <article className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-6 shadow-lg dark:bg-white/5">
+              <h2 className="text-xl font-heading font-semibold">Approvals</h2>
+              <ul className="mt-4 space-y-3 text-sm">
+                {project.approvals.map((approval) => (
+                  <li key={approval.id} className="rounded-2xl border border-borderColor-dark/20 p-3">
+                    <p className="font-semibold">{approval.label}</p>
+                    <p className="text-xs text-textSecondary">MYR {approval.amount.toLocaleString()}</p>
+                    <div className="mt-2 flex gap-2">
+                      <button type="button" className="flex-1 rounded-full border border-borderColor-dark/30 px-3 py-2 text-xs">
+                        Approve
+                      </button>
+                      <button type="button" className="flex-1 rounded-full border border-red-500/30 px-3 py-2 text-xs text-red-400">
+                        Hold
+                      </button>
                     </div>
-                  </div>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </section>
+
+          <section className="grid gap-6 lg:grid-cols-2">
+            <article className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-6 shadow-lg dark:bg-white/5">
+              <h2 className="text-xl font-heading font-semibold">Photo log</h2>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {project.photos.map((photo, index) => (
+                  <div key={photo} className="h-40 rounded-3xl bg-cover bg-center" style={{ backgroundImage: `url(${photo})` }} aria-label={`Site photo ${index + 1}`}></div>
                 ))}
               </div>
-            </div>
-
-            {/* Upcoming Tasks */}
-            <div className="p-6 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-primary-gold/20 shadow-lg">
-              <h3 className="text-xl font-heading font-bold mb-4">Upcoming Tasks</h3>
-              <div className="space-y-3">
-                {[
-                  { task: 'Review kitchen design mockups', due: 'Today' },
-                  { task: 'Site inspection - Office project', due: 'Tomorrow' },
-                  { task: 'Submit permit applications', due: 'Jan 30' },
-                  { task: 'Client meeting - Smith Family', due: 'Feb 2' },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 dark:border-borderColor-dark/40">
-                    <input
-                      type="checkbox"
-                      className="w-5 h-5 rounded border-gray-300 text-primary-gold focus:ring-primary-gold"
-                    />
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">{item.task}</p>
-                      <p className="text-xs text-textSecondary-light dark:text-textSecondary">Due: {item.due}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+            </article>
+            <AIStudio />
+          </section>
         </section>
       </main>
+      <Footer onNavigate={onNavigate} />
     </div>
   );
 };

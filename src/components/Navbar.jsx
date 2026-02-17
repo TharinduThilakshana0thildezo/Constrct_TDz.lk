@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 import PlatformDropdown from './PlatformDropdown';
+import { useAppState } from '../context/AppStateContext';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '#hero', action: 'home' },
@@ -14,6 +15,8 @@ const NAV_ITEMS = [
 const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hideHomeNav = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('#hero');
+  const { toggleModal } = useAppState();
 
   useEffect(() => {
     const onScroll = () => {
@@ -22,6 +25,35 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
+    if (!isHomePage) return undefined;
+    const sections = NAV_ITEMS.map((item) => item.href).filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries.find((e) => e.isIntersecting);
+        if (entry) {
+          setActiveSection(`#${entry.target.id}`);
+        }
+      },
+      { threshold: 0.4 },
+    );
+    sections.forEach((selector) => {
+      const node = document.querySelector(selector);
+      if (node) {
+        observer.observe(node);
+      }
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const handleNavClick = (href, action) => {
     // Check if we're on the home page
@@ -77,6 +109,8 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
     }
   };
 
+  const openSearch = () => toggleModal('showSearch');
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-emphasized ${
@@ -113,7 +147,10 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
                   <button
                     type="button"
                     onClick={() => handleNavClick(item.href, item.action)}
-                    className="transition-colors duration-150 text-primary-gold dark:text-textSecondary hover:text-primary-gold dark:hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
+                    className={`transition-colors duration-150 text-primary-gold dark:text-textSecondary hover:text-primary-gold dark:hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold ${
+                      activeSection === item.href ? 'text-primary-gold' : ''
+                    }`}
+                    aria-current={activeSection === item.href ? 'page' : undefined}
                   >
                     {item.label}
                   </button>
@@ -129,6 +166,13 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
             <ThemeToggle />
             <button
               type="button"
+              onClick={openSearch}
+              className="rounded-full border border-borderColor-dark/60 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold"
+            >
+              Search
+            </button>
+            <button
+              type="button"
               onClick={handleLoginClick}
               className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
             >
@@ -136,13 +180,7 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
             </button>
             <button
               type="button"
-              onClick={handleLoginClick}
-              className="rounded-full border border-borderColor-dark/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-textPrimary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              Register
-            </button>
-            <button
-              type="button"
+              onClick={() => onNavigate && onNavigate('post-project')}
               className="rounded-full bg-gradient-to-r from-primary-gold to-primary-goldSecondary px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-black shadow-card transition-all duration-200 hover:from-primary-goldSecondary hover:to-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Post a Project
@@ -156,6 +194,18 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
         {/* Mobile actions */}
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
+          <button
+            type="button"
+            aria-label="Open global search"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-borderColor-dark/70 bg-black/60 text-textSecondary"
+            onClick={openSearch}
+          >
+            <span className="sr-only">Search</span>
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="16.65" y1="16.65" x2="21" y2="21" />
+            </svg>
+          </button>
           <button
             type="button"
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-borderColor-dark/70 bg-black/60 text-textSecondary transition-colors duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -182,7 +232,7 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
                   <li key={item.label}>
                     <button
                       type="button"
-                      onClick={() => handleNavClick(item.href)}
+                      onClick={() => handleNavClick(item.href, item.action)}
                       className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-left transition-colors duration-150 hover:bg-card/80 hover:text-primary-gold focus-visible:outline-none focus-visible:bg-card/80 focus-visible:text-primary-gold text-primary-gold dark:text-textSecondary"
                     >
                       <span>{item.label}</span>
@@ -199,13 +249,6 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
                 className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
               >
                 Login
-              </button>
-              <button
-                type="button"
-                onClick={handleLoginClick}
-                className="rounded-full border border-borderColor-dark/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-textPrimary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                Register
               </button>
               <button
                 type="button"

@@ -14,7 +14,7 @@ const Home = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-background-light text-textPrimary-light dark:bg-background dark:text-textPrimary transition-colors duration-300 ease-emphasized">
       <Navbar onNavigate={onNavigate} hideHomeNav={true} />
-      <main>
+      <main id="main-content">
         <section
           id="hero"
           className="bg-gradient-to-b from-background-light via-background-light to-background-light dark:from-background dark:via-[#050505] dark:to-background"

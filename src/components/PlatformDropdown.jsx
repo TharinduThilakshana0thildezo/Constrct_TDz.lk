@@ -1,44 +1,44 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useAppState } from '../context/AppStateContext';
 
 const DROPDOWN_MENU_ITEMS = [
   {
     section: 'Platform & Trust',
     items: [
-      { label: 'About Us', href: '#about', icon: '🏢' },
-      { label: 'How It Works', href: '#how-it-works-detail', icon: '⚙️' },
-      { label: 'Trust & Verification', href: '#trust', icon: '✓' },
-      { label: 'Compliance & Standards', href: '#compliance', icon: '📋' },
+      { label: 'About Us', page: 'about', icon: '🏢' },
+      { label: 'How It Works', page: 'how-it-works', icon: '⚙️' },
+      { label: 'Trust & Verification', page: 'trust', icon: '✓' },
+      { label: 'Compliance & Standards', page: 'compliance', icon: '📋' },
     ],
   },
   {
     section: 'Help & Support',
     items: [
-      { label: 'Help Center', href: '#help', icon: '💡' },
-      { label: 'FAQs', href: '#faqs', icon: '❓' },
-      { label: 'Contact Us', href: '#contact', icon: '📧' },
+      { label: 'Help Center', page: 'help-center', icon: '💡' },
+      { label: 'FAQs', page: 'faqs', icon: '❓' },
+      { label: 'Contact Us', page: 'contact', icon: '📧' },
     ],
   },
   {
     section: 'Resources',
     items: [
-      { label: 'Construction Cost Guide', href: '#cost-guide', icon: '💰' },
-      { label: 'Blog / Insights', href: '#blog', icon: '📰' },
-      { label: 'Reports', href: '#reports', icon: '📊', badge: 'Coming Soon' },
+      { label: 'Construction Cost Guide', page: 'cost-guide', icon: '💰' },
+      { label: 'Blog / Insights', page: 'insights', icon: '📰' },
+      { label: 'Reports', page: 'reports', icon: '📊', badge: 'Coming Soon' },
     ],
   },
-  {
-    section: 'Legal & Policy',
-    items: [
-      { label: 'Terms & Conditions', href: '#terms', icon: '📜' },
-      { label: 'Privacy Policy', href: '#privacy', icon: '🔒' },
-      { label: 'Dispute Resolution', href: '#dispute', icon: '⚖️' },
-    ],
-  },
+];
+
+const roles = [
+  { id: 'homeowner', label: 'Homeowner', description: 'Client dashboard & tracking' },
+  { id: 'contractor', label: 'Contractor', description: 'Bids, jobs, invoices' },
+  { id: 'admin', label: 'Admin', description: 'Moderation cockpit' },
 ];
 
 const PlatformDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const { state, setRole, navigate } = useAppState();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -64,11 +64,16 @@ const PlatformDropdown = () => {
     };
   }, [isOpen]);
 
-  const handleItemClick = (href) => {
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  const handleItemClick = (page) => {
+    if (page) navigate(page);
+    setIsOpen(false);
+  };
+
+  const handleRoleChange = (nextRole) => {
+    setRole(nextRole);
+    if (nextRole === 'homeowner') navigate('dashboard');
+    if (nextRole === 'contractor') navigate('contractor');
+    if (nextRole === 'admin') navigate('admin');
     setIsOpen(false);
   };
 
@@ -123,9 +128,9 @@ const PlatformDropdown = () => {
           <div className="absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-primary-goldSecondary/15 blur-3xl pointer-events-none" />
           
           {/* Content wrapper */}
-          <div className="relative p-8">
+          <div className="relative p-8 space-y-6">
             <div className="grid grid-cols-2 gap-6">
-              {DROPDOWN_MENU_ITEMS.map((section, sectionIndex) => (
+              {DROPDOWN_MENU_ITEMS.map((section) => (
                 <div key={section.section} className="space-y-3">
                   {/* Section header */}
                   <div className="px-2 pb-2 border-b border-primary-gold/30 shadow-[0_1px_0_rgba(201,162,77,0.15)]">
@@ -140,7 +145,7 @@ const PlatformDropdown = () => {
                       <button
                         key={item.label}
                         type="button"
-                        onClick={() => handleItemClick(item.href)}
+                        onClick={() => handleItemClick(item.page)}
                         className="group relative flex w-full items-center justify-between gap-3 rounded-xl px-3 py-3 text-left transition-all duration-300 hover:bg-gradient-to-r hover:from-primary-gold/20 hover:to-primary-goldSecondary/15 hover:shadow-[0_0_25px_rgba(201,162,77,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] hover:border hover:border-primary-gold/30 focus-visible:bg-gradient-to-r focus-visible:from-primary-gold/20 focus-visible:to-primary-goldSecondary/15 focus-visible:outline-none"
                       >
                         {/* Hover chrome accent line */}
@@ -164,6 +169,33 @@ const PlatformDropdown = () => {
                   </div>
                 </div>
               ))}
+              <div className="space-y-3">
+                <div className="px-2 pb-2 border-b border-primary-gold/30 shadow-[0_1px_0_rgba(201,162,77,0.15)]">
+                  <p className="text-[0.75rem] font-bold uppercase tracking-[0.28em] text-primary-gold drop-shadow-[0_0_8px_rgba(201,162,77,0.4)]">
+                    Active Role
+                  </p>
+                </div>
+                <div className="space-y-3">
+                  <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary-gold/70">Sandbox only</p>
+                  <div className="grid gap-3">
+                    {roles.map((role) => (
+                      <button
+                        key={role.id}
+                        type="button"
+                        onClick={() => handleRoleChange(role.id)}
+                        className={`w-full rounded-2xl border px-3 py-3 text-left text-xs transition-all duration-200 ${
+                          state.role === role.id
+                            ? 'border-primary-gold bg-primary-gold/15 text-primary-gold'
+                            : 'border-white/10 text-white/80 hover:border-primary-gold/50 hover:text-primary-gold'
+                        }`}
+                      >
+                        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.25em]">{role.label}</p>
+                        <p className="mt-1 text-[0.65rem] text-white/70">{role.description}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           
