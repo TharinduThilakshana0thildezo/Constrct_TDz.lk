@@ -141,13 +141,13 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
         {/* Desktop nav */}
         {!hideNavItems && (
           <div className="hidden flex-1 items-center justify-center md:flex">
-            <ul className="flex items-center gap-7 text-xs font-medium uppercase tracking-[0.16em] text-primary-gold dark:text-textSecondary">
+            <ul className="flex items-center gap-7 text-xs font-medium uppercase tracking-[0.16em] text-textPrimary-light dark:text-textSecondary">
               {NAV_ITEMS.filter(item => !hideHomeNav || item.label !== 'Home').map((item) => (
                 <li key={item.label}>
                   <button
                     type="button"
                     onClick={() => handleNavClick(item.href, item.action)}
-                    className={`transition-colors duration-150 text-primary-gold dark:text-textSecondary hover:text-primary-gold dark:hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold ${
+                    className={`transition-colors duration-150 text-textPrimary-light dark:text-textSecondary hover:text-primary-gold dark:hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold ${
                       activeSection === item.href ? 'text-primary-gold' : ''
                     }`}
                     aria-current={activeSection === item.href ? 'page' : undefined}
@@ -167,14 +167,14 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
             <button
               type="button"
               onClick={openSearch}
-              className="rounded-full border border-borderColor-dark/60 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold"
+              className="rounded-full border border-borderColor-light dark:border-borderColor-dark/60 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary-light dark:text-textSecondary transition-colors duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold"
             >
               Search
             </button>
             <button
               type="button"
               onClick={handleLoginClick}
-              className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
+              className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary-light dark:text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
             >
               Login
             </button>
@@ -197,7 +197,7 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
           <button
             type="button"
             aria-label="Open global search"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-borderColor-dark/70 bg-black/60 text-textSecondary"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-borderColor-light dark:border-borderColor-dark/70 bg-white/80 dark:bg-black/60 text-textSecondary-light dark:text-textSecondary"
             onClick={openSearch}
           >
             <span className="sr-only">Search</span>
@@ -208,7 +208,7 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
           </button>
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-borderColor-dark/70 bg-black/60 text-textSecondary transition-colors duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-borderColor-light dark:border-borderColor-dark/70 bg-white/80 dark:bg-black/60 text-textSecondary-light dark:text-textSecondary transition-colors duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label="Toggle navigation menu"
             onClick={() => setIsOpen((prev) => !prev)}
           >
@@ -224,19 +224,19 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
 
       {/* Mobile menu panel */}
       {isOpen && (
-        <div className="border-t border-borderColor-dark/50 bg-background/98 backdrop-blur-xl md:hidden">
+        <div className="border-t border-borderColor-light dark:border-borderColor-dark/50 bg-white/98 dark:bg-background/98 backdrop-blur-xl md:hidden">
           <div className="container max-w-6xl py-3">
             {!hideNavItems && (
-              <ul className="space-y-2 text-xs font-medium uppercase tracking-[0.16em] text-primary-gold dark:text-textSecondary">
+              <ul className="space-y-2 text-xs font-medium uppercase tracking-[0.16em] text-textPrimary-light dark:text-textSecondary">
                 {NAV_ITEMS.map((item) => (
                   <li key={item.label}>
                     <button
                       type="button"
                       onClick={() => handleNavClick(item.href, item.action)}
-                      className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-left transition-colors duration-150 hover:bg-card/80 hover:text-primary-gold focus-visible:outline-none focus-visible:bg-card/80 focus-visible:text-primary-gold text-primary-gold dark:text-textSecondary"
+                      className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-left transition-colors duration-150 hover:bg-card/80 hover:text-primary-gold focus-visible:outline-none focus-visible:bg-card/80 focus-visible:text-primary-gold text-textPrimary-light dark:text-textSecondary"
                     >
                       <span>{item.label}</span>
-                      <span className="text-[0.55rem] text-textSecondary/70">●</span>
+                      <span className="text-[0.55rem] text-textSecondary-light/70 dark:text-textSecondary/70">●</span>
                     </button>
                   </li>
                 ))}
@@ -246,7 +246,7 @@ const Navbar = ({ onNavigate, hideNavItems = false, logoScrollToTop = false, hid
               <button
                 type="button"
                 onClick={handleLoginClick}
-                className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
+                className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-textSecondary-light dark:text-textSecondary transition-colors duration-150 hover:text-primary-gold focus-visible:outline-none focus-visible:text-primary-gold"
               >
                 Login
               </button>

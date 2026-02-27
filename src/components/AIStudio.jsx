@@ -17,7 +17,7 @@ const AIStudio = () => {
     <section className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-6 shadow-lg dark:bg-white/5">
       <header className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">AI studio</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">AI studio</p>
           <h2 className="text-2xl font-heading font-semibold">Predict · Design · Advise</h2>
         </div>
         <button
@@ -32,9 +32,9 @@ const AIStudio = () => {
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <div className="space-y-4">
           <article className="rounded-2xl border border-borderColor-dark/20 p-4">
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">AI cost prediction</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">AI cost prediction</p>
             <p className="text-4xl font-semibold text-primary-gold">MYR {aiInsights.costPrediction.baseline.toLocaleString()}</p>
-            <p className="text-sm text-textSecondary">Confidence {(aiInsights.costPrediction.confidence * 100).toFixed(0)}%</p>
+            <p className="text-sm text-textSecondary-light dark:text-textSecondary">Confidence {(aiInsights.costPrediction.confidence * 100).toFixed(0)}%</p>
             <ul className="mt-3 space-y-2 text-sm">
               {aiInsights.costPrediction.drivers.map((driver) => (
                 <li key={driver.label} className="flex items-center justify-between">
@@ -46,7 +46,7 @@ const AIStudio = () => {
           </article>
 
           <article className="rounded-2xl border border-borderColor-dark/20 p-4">
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Before / after preview</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Before / after preview</p>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               <div className="h-32 rounded-2xl bg-[url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=400&q=60')] bg-cover bg-center" aria-label="Before photo"></div>
               <div className="h-32 rounded-2xl bg-[url('https://images.unsplash.com/photo-1484151709479-3996843263cf?auto=format&fit=crop&w=400&q=60')] bg-cover bg-center" aria-label="After render"></div>
@@ -56,12 +56,12 @@ const AIStudio = () => {
 
         <div className="space-y-4">
           <article className="rounded-2xl border border-borderColor-dark/20 p-4">
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Design suggestions</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Design suggestions</p>
             <ul className="mt-3 space-y-3 text-sm">
               {aiInsights.designSuggestions.map((suggestion) => (
                 <li key={suggestion.id} className="rounded-2xl border border-borderColor-dark/20 p-3">
                   <p className="font-semibold">{suggestion.title}</p>
-                  <p className="text-xs text-textSecondary">{suggestion.description}</p>
+                  <p className="text-xs text-textSecondary-light dark:text-textSecondary">{suggestion.description}</p>
                   <p className="mt-2 text-xs uppercase tracking-[0.3em] text-primary-gold">
                     Impact {suggestion.impact} · Cost {suggestion.costDelta}
                   </p>
@@ -71,7 +71,7 @@ const AIStudio = () => {
           </article>
 
           <article className="rounded-2xl border border-borderColor-dark/20 p-4">
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">AI concierge</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">AI concierge</p>
             <label htmlFor="ai-prompt" className="sr-only">
               Ask AI chatbot
             </label>

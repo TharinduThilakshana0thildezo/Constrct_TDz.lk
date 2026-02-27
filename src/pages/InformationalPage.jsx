@@ -633,7 +633,7 @@ const InformationalPage = ({ onNavigate, pageKey = 'about' }) => {
                   <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-black/10 text-black">←</span>
                   Back home
                 </button>
-                <nav className="text-xs font-semibold uppercase tracking-[0.3em] text-textSecondary text-right">
+                <nav className="text-xs font-semibold uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary text-right">
                   <button
                     type="button"
                     onClick={() => onNavigate && onNavigate('home')}
@@ -642,14 +642,14 @@ const InformationalPage = ({ onNavigate, pageKey = 'about' }) => {
                     Home
                   </button>
                   <span className="mx-2">/</span>
-                  <span className="text-textPrimary">{content.slug.replace(/-/g, ' ')}</span>
+                  <span className="text-textPrimary-light dark:text-textPrimary">{content.slug.replace(/-/g, ' ')}</span>
                 </nav>
               </div>
 
               <div className="mt-8 max-w-4xl">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary-gold">{content.eyebrow}</p>
                 <h1 className="mt-4 text-3xl md:text-5xl font-heading font-semibold tracking-tight">{content.title}</h1>
-                <p className="mt-4 text-base text-textSecondary">{content.description}</p>
+                <p className="mt-4 text-base text-textSecondary-light dark:text-textSecondary">{content.description}</p>
                 <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
                   {content.heroStats?.map((stat) => (
                     <div key={stat.label} className="rounded-2xl border border-borderColor-light/80 dark:border-white/10 bg-white/70 dark:bg-white/5 px-5 py-4 shadow-card backdrop-blur">
@@ -662,7 +662,7 @@ const InformationalPage = ({ onNavigate, pageKey = 'about' }) => {
                   <div className="mt-8 rounded-3xl border border-dashed border-primary-gold/50 bg-primary-gold/5 px-6 py-6">
                     <p className="text-xs uppercase tracking-[0.3em] text-primary-gold">{content.highlight.label}</p>
                     <p className="mt-2 text-xl font-heading">{content.highlight.title}</p>
-                    <p className="mt-2 text-sm text-textSecondary">{content.highlight.description}</p>
+                    <p className="mt-2 text-sm text-textSecondary-light dark:text-textSecondary">{content.highlight.description}</p>
                   </div>
                 )}
               </div>
@@ -679,7 +679,7 @@ const InformationalPage = ({ onNavigate, pageKey = 'about' }) => {
                       <p className="text-xs uppercase tracking-[0.3em] text-primary-gold/80">{section.eyebrow}</p>
                     )}
                     <h2 className="mt-2 text-2xl font-heading">{section.title}</h2>
-                    <p className="mt-3 text-sm text-textSecondary">{section.description}</p>
+                    <p className="mt-3 text-sm text-textSecondary-light dark:text-textSecondary">{section.description}</p>
                   </div>
                   <div className={`mt-8 grid grid-cols-1 gap-6 ${gridClass}`}>
                     {section.items?.map((item) => (
@@ -688,12 +688,12 @@ const InformationalPage = ({ onNavigate, pageKey = 'about' }) => {
                         className="rounded-3xl border border-borderColor-light/60 dark:border-white/10 bg-white/70 dark:bg-card/30 p-5 shadow-card backdrop-blur"
                       >
                         {item.subtitle && (
-                          <p className="text-[0.65rem] uppercase tracking-[0.3em] text-textSecondary">{item.subtitle}</p>
+                          <p className="text-[0.65rem] uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">{item.subtitle}</p>
                         )}
-                        <h3 className="text-lg font-semibold text-textPrimary">{item.title}</h3>
-                        <p className="mt-2 text-sm text-textSecondary">{item.description}</p>
+                        <h3 className="text-lg font-semibold text-textPrimary-light dark:text-textPrimary">{item.title}</h3>
+                        <p className="mt-2 text-sm text-textSecondary-light dark:text-textSecondary">{item.description}</p>
                         {item.points && (
-                          <ul className="mt-3 space-y-1 text-sm text-textSecondary">
+                          <ul className="mt-3 space-y-1 text-sm text-textSecondary-light dark:text-textSecondary">
                             {item.points.map((point) => (
                               <li key={point} className="flex items-start gap-2">
                                 <span className="mt-1 inline-flex h-1.5 w-1.5 rounded-full bg-primary-gold" />
@@ -724,7 +724,7 @@ const InformationalPage = ({ onNavigate, pageKey = 'about' }) => {
                       {content.cta.label}
                     </button>
                     {content.cta.note && (
-                      <p className="text-sm text-textSecondary">{content.cta.note}</p>
+                      <p className="text-sm text-textSecondary-light dark:text-textSecondary">{content.cta.note}</p>
                     )}
                   </div>
                 </div>

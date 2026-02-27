@@ -8,8 +8,8 @@ const ResourceCard = ({ icon = '📄', title, description }) => {
           {icon}
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-textPrimary">{title}</h3>
-          <p className="mt-2 text-sm text-textSecondary">{description}</p>
+          <h3 className="text-lg font-semibold text-textPrimary-light dark:text-textPrimary">{title}</h3>
+          <p className="mt-2 text-sm text-textSecondary-light dark:text-textSecondary">{description}</p>
         </div>
       </div>
 

@@ -62,7 +62,7 @@ const PostProjectWizard = ({ onNavigate }) => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-textPrimary">
+    <div className="min-h-screen bg-background-light dark:bg-background text-textPrimary-light dark:text-textPrimary">
       <Navbar onNavigate={onNavigate} hideNavItems logoScrollToTop />
       <main id="main-content" className="container max-w-6xl pt-32 pb-16">
         <header className="mb-10 rounded-3xl border border-borderColor-dark/30 bg-black/60 p-6 text-white shadow-2xl">
@@ -104,7 +104,7 @@ const PostProjectWizard = ({ onNavigate }) => {
 
         <section className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-8 shadow-lg dark:bg-white/5">
           <h2 className="text-2xl font-heading font-semibold">{currentStep.label}</h2>
-          <p className="text-sm text-textSecondary">{currentStep.description}</p>
+          <p className="text-sm text-textSecondary-light dark:text-textSecondary">{currentStep.description}</p>
 
           {currentStep.key === 'details' && (
             <div className="mt-6 grid gap-4">
@@ -259,7 +259,7 @@ const PostProjectWizard = ({ onNavigate }) => {
 
           {currentStep.key === 'files' && (
             <div className="mt-6 rounded-2xl border border-dashed border-borderColor-dark/40 p-6 text-center">
-              <p className="text-sm text-textSecondary">Upload drawings, photos, or references</p>
+              <p className="text-sm text-textSecondary-light dark:text-textSecondary">Upload drawings, photos, or references</p>
               <label className="mt-4 inline-flex cursor-pointer items-center justify-center rounded-full border border-primary-gold/40 px-5 py-2 text-sm font-semibold text-primary-gold">
                 <input type="file" multiple className="sr-only" onChange={handleFiles} />
                 Select files
@@ -268,34 +268,34 @@ const PostProjectWizard = ({ onNavigate }) => {
                 {(wizard.files || []).map((file) => (
                   <li key={file.id} className="flex items-center justify-between rounded-2xl border border-borderColor-dark/30 px-3 py-2">
                     <span>{file.name}</span>
-                    <span className="text-xs text-textSecondary">{Math.round((file.size || 0) / 1024)} KB</span>
+                    <span className="text-xs text-textSecondary-light dark:text-textSecondary">{Math.round((file.size || 0) / 1024)} KB</span>
                   </li>
                 ))}
-                {wizard.files?.length === 0 && <li className="text-xs text-textSecondary">No files yet.</li>}
+                {wizard.files?.length === 0 && <li className="text-xs text-textSecondary-light dark:text-textSecondary">No files yet.</li>}
               </ul>
             </div>
           )}
 
           {currentStep.key === 'review' && (
             <div className="mt-6 space-y-4 text-sm">
-              <p className="text-textSecondary">
+              <p className="text-textSecondary-light dark:text-textSecondary">
                 Review your brief. You can still edit after posting, and AI can suggest optimisations.
               </p>
               <div className="rounded-2xl border border-borderColor-dark/30 p-4">
                 <h3 className="font-semibold">Overview</h3>
-                <p className="text-textSecondary">{wizard.details.description || 'No description yet.'}</p>
+                <p className="text-textSecondary-light dark:text-textSecondary">{wizard.details.description || 'No description yet.'}</p>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded-2xl border border-borderColor-dark/30 p-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Budget</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Budget</p>
                   <p className="text-xl font-semibold">{wizard.budget.estimate || 'TBD'} MYR</p>
                 </div>
                 <div className="rounded-2xl border border-borderColor-dark/30 p-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Timeline</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Timeline</p>
                   <p className="text-xl font-semibold">{wizard.timeline.durationWeeks} weeks</p>
                 </div>
               </div>
-              <button type="button" className="w-full rounded-2xl border border-borderColor-dark/40 px-4 py-3 text-xs uppercase tracking-[0.3em] text-textSecondary">
+              <button type="button" className="w-full rounded-2xl border border-borderColor-dark/40 px-4 py-3 text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">
                 CAPTCHA placeholder · human check
               </button>
             </div>
@@ -311,7 +311,7 @@ const PostProjectWizard = ({ onNavigate }) => {
               Back
             </button>
             <div className="flex items-center gap-3">
-              <p className="text-xs uppercase tracking-[0.25em] text-textSecondary">
+              <p className="text-xs uppercase tracking-[0.25em] text-textSecondary-light dark:text-textSecondary">
                 Step {stepIndex + 1} of {steps.length}
               </p>
               <button

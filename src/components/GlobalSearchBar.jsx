@@ -72,7 +72,7 @@ const GlobalSearchBar = () => {
         />
         <div className="mt-4 max-h-72 overflow-y-auto">
           {results.length === 0 && (
-            <p className="px-3 py-2 text-sm text-textSecondary">No matches yet. Try "penthouse".</p>
+            <p className="px-3 py-2 text-sm text-textSecondary-light dark:text-textSecondary">No matches yet. Try "penthouse".</p>
           )}
           <ul>
             {results.map((item, index) => (
@@ -84,20 +84,20 @@ const GlobalSearchBar = () => {
                     close();
                   }}
                   className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors ${
-                    index === activeIndex ? 'bg-primary-gold/20 text-primary-gold' : 'text-textPrimary'
+                    index === activeIndex ? 'bg-primary-gold/20 text-primary-gold' : 'text-textPrimary-light dark:text-textPrimary'
                   }`}
                 >
                   <div>
                     <p className="font-semibold">{item.label}</p>
-                    <p className="text-xs text-textSecondary">{item.context}</p>
+                    <p className="text-xs text-textSecondary-light dark:text-textSecondary">{item.context}</p>
                   </div>
-                  <span className="text-[0.7rem] uppercase tracking-wide text-textSecondary">{item.type}</span>
+                  <span className="text-[0.7rem] uppercase tracking-wide text-textSecondary-light dark:text-textSecondary">{item.type}</span>
                 </button>
               </li>
             ))}
           </ul>
         </div>
-        <div className="mt-3 flex items-center justify-between text-[0.7rem] uppercase tracking-[0.28em] text-textSecondary">
+        <div className="mt-3 flex items-center justify-between text-[0.7rem] uppercase tracking-[0.28em] text-textSecondary-light dark:text-textSecondary">
           <p>Navigate with ↑ ↓ · enter</p>
           <button type="button" className="rounded-full border border-borderColor-dark/40 px-3 py-1" onClick={close}>
             Close

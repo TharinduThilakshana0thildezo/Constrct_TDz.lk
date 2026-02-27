@@ -20,7 +20,7 @@ const CostEstimator = () => {
     <section className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-8 shadow-lg dark:bg-white/5">
       <header className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Cost estimator</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Cost estimator</p>
           <h2 className="text-2xl font-heading font-semibold">AI-assisted budgeting</h2>
         </div>
         <button type="button" className="rounded-full border border-borderColor-dark/40 px-4 py-2 text-xs font-semibold">
@@ -111,7 +111,7 @@ const MaterialCalculator = () => {
   return (
     <section className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-8 shadow-lg dark:bg-white/5">
       <header>
-        <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Material calculator</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Material calculator</p>
         <h2 className="text-2xl font-heading font-semibold">Bill of materials</h2>
       </header>
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
@@ -157,13 +157,13 @@ const MaterialCalculator = () => {
             <p className="mt-2 text-4xl font-bold text-primary-gold">MYR {total.toLocaleString()}</p>
           </div>
           <div className="rounded-3xl border border-borderColor-dark/30 p-4 text-sm">
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Vendors</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Vendors</p>
             <ul className="mt-3 space-y-2">
               {vendorQuotes.map((vendor) => (
                 <li key={vendor.id} className="flex items-center justify-between rounded-2xl border border-borderColor-dark/20 px-3 py-2">
                   <div>
                     <p className="font-semibold">{vendor.vendor}</p>
-                    <p className="text-xs text-textSecondary">Lead time {vendor.leadTime}</p>
+                    <p className="text-xs text-textSecondary-light dark:text-textSecondary">Lead time {vendor.leadTime}</p>
                   </div>
                   <span className="text-xs text-primary-gold">{vendor.variance}</span>
                 </li>

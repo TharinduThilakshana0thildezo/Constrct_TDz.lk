@@ -55,7 +55,7 @@ const Faqs = ({ onNavigate }) => {
                 <h1 className="mt-4 text-3xl md:text-5xl font-heading font-semibold tracking-tight">
                   Get fast answers from Ava or our support pod
                 </h1>
-                <p className="mt-4 text-base text-textSecondary">
+                <p className="mt-4 text-base text-textSecondary-light dark:text-textSecondary">
                   Explore curated FAQs, live operational metrics, and our conversational assistant trained on the same knowledge base used by the support team.
                 </p>
                 <div className="mt-6 flex flex-wrap justify-center gap-6">
@@ -77,7 +77,7 @@ const Faqs = ({ onNavigate }) => {
                   <div key={cluster.id} className="rounded-3xl border border-borderColor-light/70 dark:border-white/10 bg-white/70 dark:bg-white/5 p-6 shadow-card backdrop-blur">
                     <p className="text-xs uppercase tracking-[0.3em] text-primary-gold/70">{cluster.title}</p>
                     <h3 className="mt-2 text-xl font-heading">{cluster.summary}</h3>
-                    <p className="mt-3 text-sm text-textSecondary">{cluster.stats}</p>
+                    <p className="mt-3 text-sm text-textSecondary-light dark:text-textSecondary">{cluster.stats}</p>
                     <button
                       type="button"
                       onClick={() => onNavigate && onNavigate('support-centre')}
@@ -92,7 +92,7 @@ const Faqs = ({ onNavigate }) => {
                   {featuredFaqs.map((faq) => (
                     <div key={faq.id} className="mt-4 rounded-2xl bg-white/70 dark:bg-white/5 p-4 text-left">
                       <p className="text-sm font-semibold">{faq.question}</p>
-                      <p className="mt-2 text-sm text-textSecondary">{faq.answer}</p>
+                      <p className="mt-2 text-sm text-textSecondary-light dark:text-textSecondary">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
@@ -111,7 +111,7 @@ const Faqs = ({ onNavigate }) => {
               <div className="rounded-3xl border border-borderColor-light dark:border-white/10 bg-gradient-to-r from-primary-gold/10 via-transparent to-secondary/10 px-6 py-10 md:px-10 md:py-12">
                 <p className="text-xs uppercase tracking-[0.3em] text-primary-gold">Need a human?</p>
                 <h2 className="mt-2 text-2xl font-heading">Escalate complex issues directly to a senior operations specialist</h2>
-                <p className="mt-3 text-sm text-textSecondary">
+                <p className="mt-3 text-sm text-textSecondary-light dark:text-textSecondary">
                   Email ops@constrct.io or schedule a live diagnostics session. We triage urgent site blockers in under 10 minutes.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4">

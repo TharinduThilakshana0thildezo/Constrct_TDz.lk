@@ -49,13 +49,13 @@ const FeaturedContractors = ({ onNavigate }) => {
           </p>
           <h2
             id="featured-contractors-heading"
-            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary md:text-3xl"
+            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary-light dark:text-textPrimary md:text-3xl"
           >
             Verified firms ready to mobilise.
           </h2>
         </div>
         <div className="flex flex-col gap-3 md:flex-row md:items-center">
-          <p className="max-w-md text-sm text-textSecondary">
+          <p className="max-w-md text-sm text-textSecondary-light dark:text-textSecondary">
             Filter by grade, sector, and region to shortlist partners who understand local regulations and delivery
             expectations.
           </p>
@@ -88,7 +88,7 @@ const FeaturedContractors = ({ onNavigate }) => {
                   <span className="h-1.5 w-1.5 rounded-full bg-primary-gold shadow-[0_0_8px_rgba(201,162,77,0.9)]" />
                   Verified
                 </div>
-                <h3 className="mt-3 font-heading text-sm font-semibold leading-snug text-textPrimary">
+                <h3 className="mt-3 font-heading text-sm font-semibold leading-snug text-textPrimary-light dark:text-textPrimary">
                   {contractor.name}
                 </h3>
                 <p className="mt-1 text-[0.75rem] text-textSecondary-light dark:text-textSecondary">{contractor.category}</p>
@@ -100,7 +100,7 @@ const FeaturedContractors = ({ onNavigate }) => {
 
             <div className="mt-4 flex items-center justify-between text-[0.8rem] text-textSecondary-light dark:text-textSecondary">
               <div>
-                <p className="font-medium text-textPrimary">{contractor.years}</p>
+                <p className="font-medium text-textPrimary-light dark:text-textPrimary">{contractor.years}</p>
                 <p>{contractor.location}</p>
               </div>
               <div className="text-right">
@@ -119,7 +119,7 @@ const FeaturedContractors = ({ onNavigate }) => {
               <p>Capacity: medium to large-scale builds.</p>
               <button
                 type="button"
-                className="rounded-full border border-borderColor-dark/80 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-textPrimary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="rounded-full border border-borderColor-dark/80 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-textPrimary-light dark:text-textPrimary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 View Profile
               </button>

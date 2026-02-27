@@ -21,13 +21,13 @@ const featured = [
 const FeaturedGuides = () => {
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-textPrimary mb-6">Featured Guides</h2>
+      <h2 className="text-2xl font-semibold text-textPrimary-light dark:text-textPrimary mb-6">Featured Guides</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {featured.map((f) => (
           <article key={f.title} className="rounded-2xl border border-borderColor-light dark:border-borderColor-dark/40 bg-card-light dark:bg-card/80 p-6 shadow-subtle hover:-translate-y-1 transition-transform duration-200">
-            <h3 className="text-lg font-semibold text-textPrimary">{f.title}</h3>
-            <p className="mt-3 text-sm text-textSecondary">{f.excerpt}</p>
-            <div className="mt-4 flex items-center justify-between text-xs text-textSecondary">
+            <h3 className="text-lg font-semibold text-textPrimary-light dark:text-textPrimary">{f.title}</h3>
+            <p className="mt-3 text-sm text-textSecondary-light dark:text-textSecondary">{f.excerpt}</p>
+            <div className="mt-4 flex items-center justify-between text-xs text-textSecondary-light dark:text-textSecondary">
               <span>{f.readTime} read</span>
               <button className="text-primary-gold font-medium">Read More →</button>
             </div>

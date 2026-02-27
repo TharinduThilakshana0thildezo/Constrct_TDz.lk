@@ -10,7 +10,7 @@ const ContractorWorkspace = ({ onNavigate }) => {
   const displayName = state.role === 'contractor' ? 'Noah Idris' : 'Elite Contractor';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-slate-900 dark:to-black">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-slate-900 dark:to-black text-textPrimary-light dark:text-textPrimary">
       <Navbar onNavigate={onNavigate} hideHomeNav={false} hideNavItems />
       <main id="main-content" className="container max-w-6xl space-y-10 pt-28 pb-16">
         <header className="rounded-3xl border border-borderColor-dark/20 bg-black/80 p-6 text-white">
@@ -22,7 +22,7 @@ const ContractorWorkspace = ({ onNavigate }) => {
         <section className="rounded-3xl border border-borderColor-dark/10 bg-white/80 p-6 shadow-lg dark:bg-white/5">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Browse</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Browse</p>
               <h2 className="text-2xl font-heading font-semibold">Curated projects</h2>
             </div>
             <button
@@ -37,7 +37,7 @@ const ContractorWorkspace = ({ onNavigate }) => {
             {homeownerProjects.map((project) => (
               <article key={project.id} className="rounded-2xl border border-borderColor-dark/10 p-4">
                 <h3 className="text-lg font-semibold">{project.title}</h3>
-                <p className="text-sm text-textSecondary">{project.location}</p>
+                <p className="text-sm text-textSecondary-light dark:text-textSecondary">{project.location}</p>
                 <div className="mt-3 flex items-center justify-between text-sm">
                   <span>Status: {project.status}</span>
                   <span>Budget MYR {project.budget.toLocaleString()}</span>
@@ -56,7 +56,7 @@ const ContractorWorkspace = ({ onNavigate }) => {
 
         <section className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-3xl border border-borderColor-dark/10 bg-white/80 p-6 shadow-lg dark:bg-white/5">
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Applications</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Applications</p>
             <h2 className="text-xl font-semibold">Bid status</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {contractorApplications.map((app) => (
@@ -64,17 +64,17 @@ const ContractorWorkspace = ({ onNavigate }) => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-semibold">{app.project}</p>
-                      <p className="text-xs text-textSecondary">{app.client}</p>
+                      <p className="text-xs text-textSecondary-light dark:text-textSecondary">{app.client}</p>
                     </div>
                     <span className="text-xs uppercase tracking-[0.3em] text-primary-gold">{app.status}</span>
                   </div>
-                  <p className="mt-2 text-xs text-textSecondary">Value MYR {app.value.toLocaleString()} · Submitted {app.submitted}</p>
+                  <p className="mt-2 text-xs text-textSecondary-light dark:text-textSecondary">Value MYR {app.value.toLocaleString()} · Submitted {app.submitted}</p>
                 </li>
               ))}
             </ul>
           </div>
           <div className="rounded-3xl border border-borderColor-dark/10 bg-white/80 p-6 shadow-lg dark:bg-white/5">
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Active jobs</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Active jobs</p>
             <h2 className="text-xl font-semibold">Site management</h2>
             <ul className="mt-4 space-y-4">
               {contractorJobs.map((job) => (
@@ -82,7 +82,7 @@ const ContractorWorkspace = ({ onNavigate }) => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-semibold">{job.title}</p>
-                      <p className="text-xs text-textSecondary">Deadline {job.deadline}</p>
+                      <p className="text-xs text-textSecondary-light dark:text-textSecondary">Deadline {job.deadline}</p>
                     </div>
                     <span className="text-sm font-semibold text-primary-gold">{job.progress}%</span>
                   </div>
@@ -97,13 +97,13 @@ const ContractorWorkspace = ({ onNavigate }) => {
 
         <section className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-3xl border border-borderColor-dark/10 bg-white/80 p-6 shadow-lg dark:bg-white/5">
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Calendar</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Calendar</p>
             <ul className="mt-4 space-y-3 text-sm">
               {calendarEvents.map((event) => (
                 <li key={event.id} className="flex items-center justify-between rounded-2xl border border-borderColor-dark/20 px-3 py-2">
                   <div>
                     <p className="font-semibold">{event.title}</p>
-                    <p className="text-xs text-textSecondary">{event.type}</p>
+                    <p className="text-xs text-textSecondary-light dark:text-textSecondary">{event.type}</p>
                   </div>
                   <span className="text-sm text-primary-gold">{event.date}</span>
                 </li>
@@ -117,7 +117,7 @@ const ContractorWorkspace = ({ onNavigate }) => {
               pushToast({ id: makeId(), type: 'invoice', message: 'Invoice submitted for approval' });
             }}
           >
-            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Finance</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Finance</p>
             <h2 className="text-xl font-semibold">Submit invoice</h2>
             <label className="mt-4 block text-sm">
               Project

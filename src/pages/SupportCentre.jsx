@@ -53,8 +53,8 @@ const SupportCentre = ({ onNavigate }) => {
               <details className="group rounded-lg border border-borderColor-light/60 dark:border-borderColor-dark/60 bg-background-light/40 dark:bg-black/60 px-4 py-3">
                 <summary className="flex cursor-pointer items-center justify-between text-sm font-medium text-textPrimary-light dark:text-textPrimary">
                   How do I post a project?
-                  <span className="ml-2 text-xs text-textSecondary group-open:hidden">+</span>
-                  <span className="ml-2 text-xs text-textSecondary hidden group-open:inline">−</span>
+                  <span className="ml-2 text-xs text-textSecondary-light dark:text-textSecondary group-open:hidden">+</span>
+                  <span className="ml-2 text-xs text-textSecondary-light dark:text-textSecondary hidden group-open:inline">−</span>
                 </summary>
                 <p className="mt-2 text-xs text-textSecondary-light dark:text-textSecondary">
                   Create an account, go to your dashboard and use the “Post a Project” flow. You will be guided to add
@@ -64,8 +64,8 @@ const SupportCentre = ({ onNavigate }) => {
               <details className="group rounded-lg border border-borderColor-light/60 dark:border-borderColor-dark/60 bg-background-light/40 dark:bg-black/60 px-4 py-3">
                 <summary className="flex cursor-pointer items-center justify-between text-sm font-medium text-textPrimary-light dark:text-textPrimary">
                   How are contractors verified?
-                  <span className="ml-2 text-xs text-textSecondary group-open:hidden">+</span>
-                  <span className="ml-2 text-xs text-textSecondary hidden group-open:inline">−</span>
+                  <span className="ml-2 text-xs text-textSecondary-light dark:text-textSecondary group-open:hidden">+</span>
+                  <span className="ml-2 text-xs text-textSecondary-light dark:text-textSecondary hidden group-open:inline">−</span>
                 </summary>
                 <p className="mt-2 text-xs text-textSecondary-light dark:text-textSecondary">
                   Contractors provide CIDA registration, trade references and key project history which are reviewed
@@ -75,8 +75,8 @@ const SupportCentre = ({ onNavigate }) => {
               <details className="group rounded-lg border border-borderColor-light/60 dark:border-borderColor-dark/60 bg-background-light/40 dark:bg-black/60 px-4 py-3">
                 <summary className="flex cursor-pointer items-center justify-between text-sm font-medium text-textPrimary-light dark:text-textPrimary">
                   Where can I get help with contracts and disputes?
-                  <span className="ml-2 text-xs text-textSecondary group-open:hidden">+</span>
-                  <span className="ml-2 text-xs text-textSecondary hidden group-open:inline">−</span>
+                  <span className="ml-2 text-xs text-textSecondary-light dark:text-textSecondary group-open:hidden">+</span>
+                  <span className="ml-2 text-xs text-textSecondary-light dark:text-textSecondary hidden group-open:inline">−</span>
                 </summary>
                 <p className="mt-2 text-xs text-textSecondary-light dark:text-textSecondary">
                   The platform provides templates and guidance but not legal advice. For disputes or contract

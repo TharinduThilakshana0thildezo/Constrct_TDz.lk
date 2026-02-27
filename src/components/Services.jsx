@@ -43,13 +43,13 @@ const Services = ({ onNavigate }) => {
           </p>
           <h2
             id="services-heading"
-            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary md:text-3xl"
+            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary-light dark:text-textPrimary md:text-3xl"
           >
             Built for every construction discipline.
           </h2>
         </div>
         <div className="flex flex-col gap-3 md:flex-row md:items-center">
-          <p className="max-w-md text-sm text-textSecondary">
+          <p className="max-w-md text-sm text-textSecondary-light dark:text-textSecondary">
             From individual home builders to national developers, the platform adapts to the complexity of your
             contracts and stakeholder mix.
           </p>

@@ -83,7 +83,7 @@ const PlatformDropdown = () => {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-borderColor-dark/70 text-textSecondary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-borderColor-dark/70 text-textSecondary-light dark:text-textSecondary transition-all duration-150 hover:border-primary-gold hover:text-primary-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-label="More options"

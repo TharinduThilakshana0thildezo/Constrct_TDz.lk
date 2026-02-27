@@ -16,7 +16,7 @@ const NotificationCenter = () => {
     >
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-textSecondary">Notifications</p>
+          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-textSecondary-light dark:text-textSecondary">Notifications</p>
           <h2 className="text-lg font-semibold">Live updates</h2>
         </div>
         <button

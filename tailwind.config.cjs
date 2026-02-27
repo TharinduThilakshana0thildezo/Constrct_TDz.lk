@@ -20,15 +20,15 @@ module.exports = {
         },
         textPrimary: {
           DEFAULT: '#F5F5F5',
-          light: '#1A1A1A',
+          light: '#000000',
         },
         textSecondary: {
           DEFAULT: '#B0B0B0',
-          light: '#5A5A5A',
+          light: '#000000',
         },
         borderColor: {
           dark: 'rgba(201, 162, 77, 0.15)',
-          light: '#C5C9CD',
+          light: '#000000',
         },
       },
       fontFamily: {

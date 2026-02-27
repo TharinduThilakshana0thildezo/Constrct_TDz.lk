@@ -19,7 +19,7 @@ const ToastStack = () => {
           className="pointer-events-auto min-w-[220px] rounded-2xl border border-borderColor-dark/30 bg-background/90 px-4 py-3 text-sm shadow-xl"
         >
           <p className="text-xs uppercase tracking-[0.3em] text-primary-gold">{toast.type}</p>
-          <p className="font-semibold text-textPrimary">{toast.message}</p>
+          <p className="font-semibold text-textPrimary-light dark:text-textPrimary">{toast.message}</p>
         </div>
       ))}
     </div>

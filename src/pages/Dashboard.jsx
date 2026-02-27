@@ -50,9 +50,9 @@ const Dashboard = ({ onNavigate, user }) => {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
               <article key={stat.label} className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-4 text-sm shadow-lg dark:bg-white/5">
-                <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">{stat.label}</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">{stat.label}</p>
                 <p className={`mt-2 text-3xl font-semibold ${stat.accent}`}>{stat.value}</p>
-                <p className="text-xs text-textSecondary">Trend {stat.change}</p>
+                <p className="text-xs text-textSecondary-light dark:text-textSecondary">Trend {stat.change}</p>
               </article>
             ))}
           </div>
@@ -61,7 +61,7 @@ const Dashboard = ({ onNavigate, user }) => {
             <article className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-6 shadow-lg dark:bg-white/5 lg:col-span-2">
               <div className="flex flex-wrap items-center justify-between">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Timeline</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Timeline</p>
                   <h2 className="text-2xl font-heading font-semibold">{project.title}</h2>
                 </div>
                 <button type="button" className="text-xs font-semibold uppercase tracking-[0.3em] text-primary-gold">
@@ -73,9 +73,9 @@ const Dashboard = ({ onNavigate, user }) => {
                   <li key={event.id} className="relative">
                     <span className="absolute -left-[14px] top-2 h-3 w-3 rounded-full bg-primary-gold"></span>
                     <div className="rounded-2xl border border-borderColor-dark/10 bg-white/70 p-4 shadow-sm dark:bg-white/5">
-                      <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">{new Date(event.timestamp).toLocaleDateString()}</p>
+                      <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">{new Date(event.timestamp).toLocaleDateString()}</p>
                       <p className="text-sm font-semibold">{event.title}</p>
-                      {event.assets && <p className="text-xs text-textSecondary">{event.assets} photos uploaded</p>}
+                      {event.assets && <p className="text-xs text-textSecondary-light dark:text-textSecondary">{event.assets} photos uploaded</p>}
                     </div>
                   </li>
                 ))}
@@ -83,16 +83,16 @@ const Dashboard = ({ onNavigate, user }) => {
             </article>
 
             <article className="rounded-3xl border border-borderColor-dark/20 bg-white/80 p-6 shadow-lg dark:bg-white/5">
-              <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">Milestones</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">Milestones</p>
               <h2 className="text-xl font-heading font-semibold">Approvals & payouts</h2>
               <ul className="mt-4 space-y-3 text-sm">
                 {project.milestones.map((milestone) => (
                   <li key={milestone.id} className="rounded-2xl border border-borderColor-dark/20 p-3">
                     <div className="flex items-center justify-between">
                       <p className="font-semibold">{milestone.label}</p>
-                      <span className="text-xs text-textSecondary">Due {milestone.due}</span>
+                      <span className="text-xs text-textSecondary-light dark:text-textSecondary">Due {milestone.due}</span>
                     </div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">
+                    <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">
                       {milestone.completed ? 'Completed' : 'In progress'}
                     </p>
                   </li>
@@ -111,7 +111,7 @@ const Dashboard = ({ onNavigate, user }) => {
               </div>
               <table className="mt-4 w-full text-sm">
                 <thead>
-                  <tr className="text-left text-xs uppercase tracking-[0.3em] text-textSecondary">
+                  <tr className="text-left text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">
                     <th className="pb-2">Contractor</th>
                     <th className="pb-2">Amount</th>
                     <th className="pb-2">ETA</th>
@@ -139,7 +139,7 @@ const Dashboard = ({ onNavigate, user }) => {
                 {project.approvals.map((approval) => (
                   <li key={approval.id} className="rounded-2xl border border-borderColor-dark/20 p-3">
                     <p className="font-semibold">{approval.label}</p>
-                    <p className="text-xs text-textSecondary">MYR {approval.amount.toLocaleString()}</p>
+                    <p className="text-xs text-textSecondary-light dark:text-textSecondary">MYR {approval.amount.toLocaleString()}</p>
                     <div className="mt-2 flex gap-2">
                       <button type="button" className="flex-1 rounded-full border border-borderColor-dark/30 px-3 py-2 text-xs">
                         Approve

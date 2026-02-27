@@ -45,14 +45,14 @@ const Testimonials = ({ onNavigate }) => {
 
           <h2
             id="testimonials-heading"
-            className="font-heading text-2xl font-semibold tracking-tight text-textPrimary md:text-3xl"
+            className="font-heading text-2xl font-semibold tracking-tight text-textPrimary-light dark:text-textPrimary md:text-3xl"
           >
             Designed for governance, not guesswork.
           </h2>
         </div>
 
         <div className="flex items-start gap-4">
-          <p className="max-w-md text-sm text-textSecondary hidden md:block">
+          <p className="max-w-md text-sm text-textSecondary-light dark:text-textSecondary hidden md:block">
             The platform supports internal approvals, site-level coordination, and finance teams who need clear,
             auditable records.
           </p>

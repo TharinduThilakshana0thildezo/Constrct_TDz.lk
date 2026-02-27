@@ -16,14 +16,14 @@ const Footer = ({ onNavigate }) => {
           </div>
 
           <div>
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-textPrimary">
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-textPrimary-light dark:text-textPrimary">
               Platform
             </h3>
             <ul className="mt-3 space-y-2 text-[0.8rem]">
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('overview')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   Overview
                 </button>
@@ -31,7 +31,7 @@ const Footer = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('overview')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   For project owners
                 </button>
@@ -39,7 +39,7 @@ const Footer = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('find-contractors')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   For contractors
                 </button>
@@ -47,7 +47,7 @@ const Footer = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('consultants')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   For consultants
                 </button>
@@ -56,17 +56,17 @@ const Footer = ({ onNavigate }) => {
           </div>
 
           <div>
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-textPrimary">
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-textPrimary-light dark:text-textPrimary">
               Resources
             </h3>
             <ul className="mt-3 space-y-2 text-[0.8rem]">
               <li>
-                <button onClick={() => onNavigate && onNavigate('resources')} className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary">Browse resources</button>
+                <button onClick={() => onNavigate && onNavigate('resources')} className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary">Browse resources</button>
               </li>
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('contract-templates')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   Contract templates
                 </button>
@@ -74,7 +74,7 @@ const Footer = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('procurement-checklist')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   Procurement checklist
                 </button>
@@ -82,7 +82,7 @@ const Footer = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('support-centre')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   Support centre
                 </button>
@@ -91,14 +91,14 @@ const Footer = ({ onNavigate }) => {
           </div>
 
           <div>
-            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-textPrimary">
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-textPrimary-light dark:text-textPrimary">
               Legal & Contact
             </h3>
             <ul className="mt-3 space-y-2 text-[0.8rem]">
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('terms-of-use')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   Terms of use
                 </button>
@@ -106,7 +106,7 @@ const Footer = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('privacy-pdpa')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   Privacy &amp; PDPA
                 </button>
@@ -114,7 +114,7 @@ const Footer = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => onNavigate && onNavigate('cookie-preferences')}
-                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary dark:text-textSecondary"
+                  className="hover:text-primary-gold transition-colors cursor-pointer text-textPrimary-light dark:text-textSecondary"
                 >
                   Cookie preferences
                 </button>
@@ -125,7 +125,7 @@ const Footer = ({ onNavigate }) => {
         </div>
       </div>
       <div className="border-t border-borderColor-dark/50">
-        <div className="container max-w-6xl flex flex-col items-start justify-between gap-2 py-4 text-[0.75rem] text-textSecondary md:flex-row md:items-center">
+        <div className="container max-w-6xl flex flex-col items-start justify-between gap-2 py-4 text-[0.75rem] text-textSecondary-light dark:text-textSecondary md:flex-row md:items-center">
           <p>© Construction Platform – Sri Lanka. All rights reserved.</p>
           <p>Personal data is processed in line with Sri Lankan PDPA requirements.</p>
         </div>

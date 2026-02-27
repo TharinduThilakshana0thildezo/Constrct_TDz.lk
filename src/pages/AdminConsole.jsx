@@ -31,9 +31,9 @@ const AdminConsole = ({ onNavigate }) => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-semibold">{bid.contractor}</p>
-                    <p className="text-xs text-textSecondary">MYR {bid.amount.toLocaleString()}</p>
+                    <p className="text-xs text-textSecondary-light dark:text-textSecondary">MYR {bid.amount.toLocaleString()}</p>
                   </div>
-                  <span className="text-xs uppercase tracking-[0.3em] text-textSecondary">{bid.status}</span>
+                  <span className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">{bid.status}</span>
                 </div>
                 <div className="mt-4 flex gap-2">
                   <button
@@ -64,7 +64,7 @@ const AdminConsole = ({ onNavigate }) => {
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {[{ label: 'Disputes', value: 2 }, { label: 'Verifications pending', value: 5 }, { label: 'SLA breaches', value: 0 }].map((card) => (
               <div key={card.label} className="rounded-2xl border border-borderColor-dark/20 p-4 text-center">
-                <p className="text-xs uppercase tracking-[0.3em] text-textSecondary">{card.label}</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-textSecondary-light dark:text-textSecondary">{card.label}</p>
                 <p className="text-3xl font-semibold text-primary-gold">{card.value}</p>
               </div>
             ))}

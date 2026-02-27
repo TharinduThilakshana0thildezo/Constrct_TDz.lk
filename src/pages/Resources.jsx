@@ -89,7 +89,7 @@ const Resources = ({ onNavigate }) => {
                   <span className="hidden sm:inline">Back to Home</span>
                 </button>
 
-                <nav className="hidden sm:block text-sm text-textSecondary">
+                <nav className="hidden sm:block text-sm text-textSecondary-light dark:text-textSecondary">
                   <ol className="inline-flex items-center gap-2">
                     <li>
                       <button
@@ -107,16 +107,16 @@ const Resources = ({ onNavigate }) => {
 
               <div className="text-center">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary-gold">Resources</p>
-                <h1 className="mt-4 text-3xl md:text-4xl font-heading font-semibold tracking-tight text-textPrimary">
+                <h1 className="mt-4 text-3xl md:text-4xl font-heading font-semibold tracking-tight text-textPrimary-light dark:text-textPrimary">
                   Construction Resources & Guides
                 </h1>
-                <p className="mt-3 text-sm text-textSecondary">
+                <p className="mt-3 text-sm text-textSecondary-light dark:text-textSecondary">
                   Practical guides, cost insights, and industry knowledge for building projects in Sri Lanka.
                 </p>
                 <div className="mt-4 h-1 w-28 mx-auto rounded-full bg-gradient-to-r from-primary-gold to-silver" />
               </div>
 
-              <nav className="mt-4 text-sm text-textSecondary sm:hidden">
+              <nav className="mt-4 text-sm text-textSecondary-light dark:text-textSecondary sm:hidden">
                 <ol className="inline-flex items-center gap-2">
                   <li>
                     <button
