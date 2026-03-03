@@ -28,17 +28,17 @@ const HowItWorks = () => {
     <section aria-labelledby="how-it-works-heading">
       <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary-gold">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-600">
             How the platform works
           </p>
           <h2
             id="how-it-works-heading"
-            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary-light dark:text-textPrimary md:text-3xl"
+            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-black dark:text-textPrimary md:text-3xl"
           >
             A governed workflow from tender to handover.
           </h2>
         </div>
-        <p className="max-w-md text-sm text-textSecondary">
+        <p className="max-w-md text-sm text-black">
           Every step is designed to reduce risk, protect project owners, and give reputable contractors a transparent
           way to win work.
         </p>
@@ -61,10 +61,10 @@ const HowItWorks = () => {
                   Step {index + 1}
                 </span>
               </div>
-              <h3 className="relative mt-4 font-heading text-sm font-semibold text-textPrimary">
+              <h3 className="relative mt-4 font-heading text-sm font-semibold text-black dark:text-textPrimary">
                 {step.title}
               </h3>
-              <p className="relative mt-2 text-[0.78rem] leading-relaxed text-textSecondary">
+              <p className="relative mt-2 text-[0.78rem] leading-relaxed text-black dark:text-textSecondary">
                 {step.description}
               </p>
             </div>

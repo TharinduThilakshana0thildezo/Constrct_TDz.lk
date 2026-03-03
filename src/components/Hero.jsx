@@ -18,7 +18,7 @@ const Hero = ({ onNavigate }) => {
         className="hero-pan absolute inset-0 h-full w-full object-cover object-center"
       />
       {/* No overlay in light mode (original image); dark overlay in dark mode for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent dark:from-black/88 dark:via-black/70 dark:to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-black/5 dark:from-black/88 dark:via-black/70 dark:to-black/40" />
 
       {/* Foreground content */}
       <div className="relative grid gap-10 px-6 pt-0 pb-16 sm:px-10 md:grid-cols-2 md:items-center lg:px-12 xl:px-0 container max-w-7xl mx-auto h-full m-0">

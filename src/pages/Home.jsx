@@ -17,7 +17,7 @@ const Home = ({ onNavigate }) => {
       <main id="main-content">
         <section
           id="hero"
-          className="bg-gradient-to-b from-background-light via-background-light to-background-light dark:from-background dark:via-[#050505] dark:to-background"
+          className="bg-background dark:bg-gradient-to-b dark:from-background dark:via-[#050505] dark:to-background"
         >
           <div className="container max-w-7xl flex min-h-[calc(100vh-5rem)] items-center py-16 md:py-24 lg:py-28">
             <Hero onNavigate={onNavigate} />
