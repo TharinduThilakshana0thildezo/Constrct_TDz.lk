@@ -33,7 +33,7 @@ const HowItWorks = () => {
           </p>
           <h2
             id="how-it-works-heading"
-            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary md:text-3xl"
+            className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary-light dark:text-textPrimary md:text-3xl"
           >
             A governed workflow from tender to handover.
           </h2>

@@ -17,8 +17,8 @@ const Hero = ({ onNavigate }) => {
         alt="Sri Lankan construction skyline with bridge and city"
         className="hero-pan absolute inset-0 h-full w-full object-cover object-center"
       />
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/75 to-black/50 dark:from-black/88 dark:via-black/70 dark:to-black/40" />
+      {/* No overlay in light mode (original image); dark overlay in dark mode for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent dark:from-black/88 dark:via-black/70 dark:to-black/40" />
 
       {/* Foreground content */}
       <div className="relative grid gap-10 px-6 pt-0 pb-16 sm:px-10 md:grid-cols-2 md:items-center lg:px-12 xl:px-0 container max-w-7xl mx-auto h-full m-0">

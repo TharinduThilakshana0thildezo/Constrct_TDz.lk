@@ -7,10 +7,10 @@ const CostEstimatorCTA = () => {
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary-gold">
           Cost estimator
         </p>
-        <h2 className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary md:text-3xl">
+        <h2 className="mt-2 font-heading text-2xl font-semibold tracking-tight text-textPrimary-light dark:text-textPrimary md:text-3xl">
           Model your construction costs before you tender.
         </h2>
-        <p className="mt-3 text-sm text-textSecondary md:max-w-lg">
+        <p className="mt-3 text-sm text-textSecondary-light dark:text-textSecondary md:max-w-lg">
           Use current Sri Lankan material and labour benchmarks to estimate project value, then share
           a structured brief with shortlisted contractors.
         </p>
